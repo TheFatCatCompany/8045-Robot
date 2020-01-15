@@ -18,15 +18,15 @@ public class Drivetrain extends SubsystemBase {
    * Creates a new ExampleSubsystem.
    */
   private Joystick j;
-  private VictorSPX v1, v2, v3, v4;
-  public Drivetrain(DifferentialDrive m_myRobot, Joystick J, VictorSPX V1, VictorSPX V2, VictorSPX V3, VictorSPX V4) 
+  private WPI_VictorSPX v1, v2, v3, v4;
+  public Drivetrain(DifferentialDrive m_myRobot, Joystick J, WPI_VictorSPX V1, WPI_VictorSPX V2, WPI_VictorSPX V3, WPI_VictorSPX V4) 
   {
    j = J;
    v1 = V1;
    v2 = V2;
    v3 = V3;
    v4 = V4;
-   m_myRobot = new DifferentialDrive(V1, V2, V3, V4);   
+   m_myRobot = new DifferentialDrive(v1, v3);   
 
   }
   @Override
