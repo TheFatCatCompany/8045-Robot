@@ -33,11 +33,10 @@ private WPI_VictorSPX v4;
    v3 = V3;
    v4 = V4;
    m_myRobot = new DifferentialDrive(v1, v3);   
-
-  }
+}
   @Override
   public void periodic() {
-
+  
 
     // This method will be called once per scheduler run
   }
