@@ -20,7 +20,8 @@ public class Moveforward extends CommandBase
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-  }
+move();  
+}
 
   // Called once the command ends or is interrupted.
   @Override
@@ -33,7 +34,7 @@ public class Moveforward extends CommandBase
     return false;
   }
     
-  public void moveForward()
+  public void move()
     {
         Drivetrain.m_myRobot.tankDrive(j.getX(),j.getY());
     }
