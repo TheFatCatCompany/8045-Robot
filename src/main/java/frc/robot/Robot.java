@@ -8,10 +8,10 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.Moveforward;
-import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.DriveTrain;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -21,7 +21,7 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-
+  public static DriveTrain m_drivetrain = null;
   private RobotContainer m_robotContainer;
 
   /**
@@ -33,6 +33,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+    m_drivetrain = new DriveTrain();
   }
 
   /**
@@ -99,6 +100,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
   // Moveforward.execute();
+    Scheduler.getInstance().run();
   }
 
   @Override

@@ -7,6 +7,10 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.Joystick;
+
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -16,4 +20,11 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
+    // Motor Controller Ports
+    public static final int RightLeader = 0;
+    public static final int RightFollower = 1;
+    public static final int LeftLeader =15;
+    public static final int LeftFollower = 13;
+//    Joystick port
+    public static final int joystick = 0;
 }

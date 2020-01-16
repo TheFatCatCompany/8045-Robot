@@ -14,24 +14,26 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.Constants;
 
-public class Drivetrain extends SubsystemBase {
+public class DriveTrain extends SubsystemBase {
   public static DifferentialDrive m_myRobot;
-/**
+  /**
    * Creates a new ExampleSubsystem.
    */
   private Joystick j;
   public WPI_VictorSPX v1;
-private WPI_VictorSPX v2;
-private WPI_VictorSPX v3;
-private WPI_VictorSPX v4;
-  public Drivetrain(DifferentialDrive m_myRobot, Joystick J, WPI_VictorSPX V1, WPI_VictorSPX V2, WPI_VictorSPX V3, WPI_VictorSPX V4) 
+  private WPI_VictorSPX v2;
+  private WPI_VictorSPX v3;
+  private WPI_VictorSPX v4;
+
+  public DriveTrain() 
   {
-   j = J;
-   v1 = V1;
-   v2 = V2;
-   v3 = V3;
-   v4 = V4;
+   j = new Joystick(Constants.joystick);
+   v1 = new WPI_VictorSPX(Constants.RightLeader);
+   v2 = new WPI_VictorSPX(Constants.LeftLeader);
+   v3 = new WPI_VictorSPX(Constants.RightFollower);
+   v4 = new WPI_VictorSPX(Constants.LeftFollower);
    m_myRobot = new DifferentialDrive(v1, v3);   
 }
   @Override
