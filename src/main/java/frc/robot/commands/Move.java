@@ -1,17 +1,21 @@
 package frc.robot.commands;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drivetrain;
 
-public class Move extends Command
-{
-    public Move() {
-          Joystick j;
+public class Move extends Command {
+          Joystick j = new Joystick(Constants.joystick);
+
+  public Move() {
           requires(Robot.m_drivetrain);
+
 
     }
 
