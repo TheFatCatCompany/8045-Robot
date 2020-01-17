@@ -20,9 +20,9 @@ package frc.robot;
 public final class Constants {
     // Motor Controller Ports
     public static final int RightLeader = 0;
-    public static final int RightFollower = 1;
-    public static final int LeftLeader =15;
-    public static final int LeftFollower = 13;
+    public static final int RightFollower = 3;
+    public static final int LeftLeader =1;
+    public static final int LeftFollower = 2;
 //    Joystick port
     public static final int joystick = 0;
 }

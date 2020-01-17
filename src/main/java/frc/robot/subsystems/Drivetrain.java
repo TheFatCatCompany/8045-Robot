@@ -11,10 +11,12 @@ import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
+import frc.robot.commands.Move;
 
 
 
@@ -26,7 +28,7 @@ public class Drivetrain extends Subsystem {
   private WPI_VictorSPX v2;
   private WPI_VictorSPX v3;
   private WPI_VictorSPX v4;
-
+  
   public Drivetrain() 
   {
    j = new Joystick(Constants.joystick);
@@ -34,7 +36,10 @@ public class Drivetrain extends Subsystem {
    v2 = new WPI_VictorSPX(Constants.LeftLeader);
    v3 = new WPI_VictorSPX(Constants.RightFollower);
    v4 = new WPI_VictorSPX(Constants.LeftFollower);
-   m_myRobot = new DifferentialDrive(v1, v3);   
+  SpeedControllerGroup leftMotors = new SpeedControllerGroup(v1, v3);
+	SpeedControllerGroup rightMotors = new SpeedControllerGroup(v2, v4);
+
+   m_myRobot = new DifferentialDrive(rightMotors, leftMotors);   
 }
   @Override
   public void periodic() {
@@ -45,6 +50,6 @@ public class Drivetrain extends Subsystem {
 @Override
 protected void initDefaultCommand() {
 	// TODO Auto-generated method stub
-	
+	setDefaultCommand(new Move());
 }
 }
