@@ -13,10 +13,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.Constants;
 
-public class DriveTrain extends SubsystemBase {
+public class Drivetrain extends SubsystemBase {
   public static DifferentialDrive m_myRobot;
   /**
    * Creates a new ExampleSubsystem.
@@ -27,7 +26,7 @@ public class DriveTrain extends SubsystemBase {
   private WPI_VictorSPX v3;
   private WPI_VictorSPX v4;
 
-  public DriveTrain() 
+  public Drivetrain() 
   {
    j = new Joystick(Constants.joystick);
    v1 = new WPI_VictorSPX(Constants.RightLeader);
