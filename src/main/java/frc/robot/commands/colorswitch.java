@@ -10,7 +10,7 @@ import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.util.Color;
 
-public class colorswitch extends Command {
+public class Colorswitch extends Command {
     Joystick j = new Joystick(Constants.joystick);
     ColorSensorV3 colorsensor = new ColorSensorV3(Constants.i2cPort);
 

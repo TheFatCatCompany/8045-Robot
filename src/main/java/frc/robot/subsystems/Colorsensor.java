@@ -8,7 +8,7 @@
 package frc.robot.subsystems;
 import com.revrobotics.ColorSensorV3;
 import frc.robot.Constants;
-import frc.robot.commands.colorswitch;
+import frc.robot.commands.Colorswitch;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.buttons.Trigger;
@@ -22,12 +22,13 @@ public class Colorsensor extends Subsystem {
   private ColorSensorV3 m_colorsensor;
   private boolean svitch;
   private JoystickButton eight;
+  private Colorswitch test;
   public Colorsensor() {
       j = new Joystick(Constants.joystick);
       m_colorsensor = new ColorSensorV3(Constants.i2cPort);
       svitch = false;
       eight = new JoystickButton(j, 8);
-      colorswitch com = new colorswitch();
+      Colorswitch test = new Colorswitch();
 
 
   
@@ -37,7 +38,7 @@ public class Colorsensor extends Subsystem {
 
   @Override
   public void periodic() {
-    eight.toggleWhenPressed(com.excecute);
+    eight.toggleWhenPressed(test);
     // This method will be called once per scheduler run
   }
 
