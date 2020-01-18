@@ -19,14 +19,15 @@ public class Colorsensor extends Subsystem {
    * Creates a new ExampleSubsystem.
    */
   private Joystick j;
-  private ColorSensorV3 Csensor;
+  private ColorSensorV3 m_colorsensor;
   private boolean svitch;
   private JoystickButton eight;
   public Colorsensor() {
       j = new Joystick(Constants.joystick);
-      Csensor = new ColorSensorV3(Constants.i2cPort);
+      m_colorsensor = new ColorSensorV3(Constants.i2cPort);
       svitch = false;
       eight = new JoystickButton(j, 8);
+      colorswitch com = new colorswitch();
 
 
   
@@ -36,7 +37,7 @@ public class Colorsensor extends Subsystem {
 
   @Override
   public void periodic() {
-    eight.toggleWhenPressed()
+    eight.toggleWhenPressed(com.excecute);
     // This method will be called once per scheduler run
   }
 
