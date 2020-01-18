@@ -7,11 +7,14 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Drivetrain;
+import com.revrobotics.ColorSensorV3;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -22,6 +25,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static Drivetrain m_drivetrain;
+  public static ColorSensorV3 m_colorsensor; 
   private RobotContainer m_robotContainer;
 
   /**
@@ -50,7 +54,9 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+    System.out.print(m_colorsensor.getBlue());
     CommandScheduler.getInstance().run();
+    Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
   }
 
   /**
