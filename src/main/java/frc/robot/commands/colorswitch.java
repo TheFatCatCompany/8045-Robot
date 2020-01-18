@@ -1,8 +1,7 @@
 package frc.robot.commands;
 
-
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -12,9 +11,10 @@ import edu.wpi.first.wpilibj.util.Color;
 
 public class Colorswitch extends Command {
     Joystick j = new Joystick(Constants.joystick);
-    ColorSensorV3 colorsensor = new ColorSensorV3(Constants.i2cPort);
-
-    public colorswitch() {
+    I2C.Port i2cPort = I2C.Port.kOnboard;
+    ColorSensorV3 colorsensor = new ColorSensorV3(i2cPort);
+  
+    public Colorswitch() {
         requires(Robot.m_colorsensor);
 
     }
@@ -46,4 +46,5 @@ public class Colorswitch extends Command {
   public boolean isFinished() {
     return false;
   }
+}
     

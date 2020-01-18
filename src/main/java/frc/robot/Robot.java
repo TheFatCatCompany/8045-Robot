@@ -39,7 +39,8 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
-    m_colorsensor = new ColorSensorV3(Constants.i2cPort);
+    I2C.Port i2cPort = I2C.Port.kOnboard;
+    m_colorsensor = new ColorSensorV3(i2cPort);
   }
 
   /**
