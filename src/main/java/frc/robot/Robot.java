@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -38,7 +39,7 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
-    
+    m_colorsensor = new ColorSensorV3(Constants.i2cPort);
   }
 
   /**
@@ -54,8 +55,9 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    CommandScheduler.getInstance().run();
-    
+   CommandScheduler.getInstance().run();
+   System.out.print(m_colorsensor.getBlue());
+    Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
   }
 
   /**
