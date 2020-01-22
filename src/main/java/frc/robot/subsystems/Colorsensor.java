@@ -13,9 +13,7 @@ import frc.robot.commands.Colorswitch;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.buttons.*;
-import com.revrobotics.ColorSensorV3;
 public class Colorsensor extends Subsystem {
   /**
    * Creates a new ExampleSubsystem.

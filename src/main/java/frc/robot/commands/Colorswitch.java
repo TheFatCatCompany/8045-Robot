@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Constants;
-import frc.robot.Robot;
+import frc.robot.subsystems.Colorsensor;
 import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.util.Color;
@@ -13,10 +13,10 @@ public class Colorswitch extends Command {
     Joystick j = new Joystick(Constants.joystick);
     I2C.Port i2cPort = I2C.Port.kOnboard;
     ColorSensorV3 colorsensor = new ColorSensorV3(i2cPort);
+    Colorsensor color = new Colorsensor();
   
     public Colorswitch() {
-        requires(Robot.m_colorsensor);
-
+        requires(color);
     }
 
     // Called when the command is initially scheduled.
@@ -28,9 +28,8 @@ public class Colorswitch extends Command {
     // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Robot.m_drivetrain.m_myRobot.arcadeDrive(j.getX(),j.getY());
     Color c = colorsensor.getColor();
-    
+       
 
 
   }
@@ -38,9 +37,8 @@ public class Colorswitch extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end() {
-  Robot.m_drivetrain.m_myRobot.arcadeDrive(0, 0);
   }
-
+ 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {

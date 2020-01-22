@@ -8,7 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -57,8 +56,7 @@ public class Robot extends TimedRobot {
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
    CommandScheduler.getInstance().run();
-   System.out.print(m_colorsensor.getBlue());
-    Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
+ 
   }
 
   /**
@@ -110,6 +108,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
   // Moveforward.execute();
+  System.out.print(m_colorsensor.getBlue());
+  Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
     Scheduler.getInstance().run();
   }
 
