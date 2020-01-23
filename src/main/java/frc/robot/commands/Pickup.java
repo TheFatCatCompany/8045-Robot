@@ -8,15 +8,16 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.subsystems.Pickup;
+import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Pickup extends CommandBase {
   Joystick j = new Joystick(Constants.joystick);
+  Intake p = new Intake();
 
   public Pickup() {
-    requires(Pickup);
+    requires(p);
   }
 
   // Called when the command is initially scheduled.

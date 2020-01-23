@@ -7,21 +7,28 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Constants;
 
-
-public class Shootball extends SubsystemBase {
+public class Intake extends SubsystemBase {
+ 
 private Joystick j;
-private WPI_VictorSPX shooter;
+private WPI_VictorSPX conveyerBelt;
+private WPI_VictorSPX catcher1;
+private WPI_VictorSPX catcher2;
+private SpeedControllerGroup catcher;
 
 
-  public Shootball() {
-    j = new Joystick(Constants.joystick);
-    shooter = new WPI_VictorSPX (Constants.shooter);
-    
+
+public Intake() {
+  j = new Joystick(Constants.joystick);
+  conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
+  catcher1 = new WPI_VictorSPX (Constants.catcher1);
+  catcher2 = new WPI_VictorSPX (Constants.catcher2);
+  catcher = new SpeedControllerGroup(catcher1, catcher2);
 
   }
 
