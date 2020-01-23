@@ -20,7 +20,8 @@ private WPI_VictorSPX shooter;
 
   public Shootball() {
     j = new Joystick(Constants.joystick);
-
+    shooter = new WPI_VictorSPX (Constants.shooter);
+    
 
   }
 

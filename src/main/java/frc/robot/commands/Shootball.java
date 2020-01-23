@@ -7,14 +7,16 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
+import frc.robot.subsystems.Shootball;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Shootball extends CommandBase {
-  /**
-   * Creates a new Shootball.
-   */
+  Joystick j = new Joystick(Constants.joystick);
+
   public Shootball() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    requires(Shootball);
   }
 
   // Called when the command is initially scheduled.

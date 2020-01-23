@@ -19,13 +19,16 @@ private Joystick j;
 private WPI_VictorSPX conveyerBelt;
 private WPI_VictorSPX catcher1;
 private WPI_VictorSPX catcher2;
-private SpeedControllerGroup leftMotors;
-private SpeedControllerGroup rightMotors; 
+private SpeedControllerGroup catcher;
+
 
 
 public Pickup() {
   j = new Joystick(Constants.joystick);
-
+  conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
+  catcher1 = new WPI_VictorSPX (Constants.catcher1);
+  catcher2 = new WPI_VictorSPX (Constants.catcher2);
+  catcher = new SpeedControllerGroup(catcher1, catcher2);
 
   }
 

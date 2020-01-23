@@ -7,14 +7,16 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
+import frc.robot.subsystems.Pickup;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Pickup extends CommandBase {
-  /**
-   * Creates a new Pickup.
-   */
+  Joystick j = new Joystick(Constants.joystick);
+
   public Pickup() {
-    // Use addRequirements() here to declare subsystem dependencies.
+    requires(Pickup);
   }
 
   // Called when the command is initially scheduled.
