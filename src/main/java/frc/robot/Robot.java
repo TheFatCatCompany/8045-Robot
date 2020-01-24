@@ -23,11 +23,8 @@ import com.revrobotics.ColorSensorV3;
  * project.
  */
 public class Robot extends TimedRobot {
-  private Command m_autonomousCommand;
-  public static Drivetrain m_drivetrain;
-  public static ColorSensorV3 m_colorsensor; 
   private RobotContainer m_robotContainer;
-
+  private Command m_autonomousCommand;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -37,9 +34,6 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    m_drivetrain= new Drivetrain();
-    I2C.Port i2cPort = I2C.Port.kOnboard;
-    m_colorsensor = new ColorSensorV3(i2cPort);
   }
 
   /**
@@ -55,8 +49,7 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-   CommandScheduler.getInstance().run();
- 
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -77,7 +70,6 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousInit() {
     m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -107,9 +99,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-  // Moveforward.execute();
-  System.out.print(m_colorsensor.getBlue());
-  Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
+    System.out.print(RobotContainer.m_colorsensor.getBlue());
+    Shuffleboard.getTab("test").add("Blue", RobotContainer.m_colorsensor.getBlue());
     Scheduler.getInstance().run();
   }
 
