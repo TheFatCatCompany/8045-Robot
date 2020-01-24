@@ -29,7 +29,7 @@ public class Colorsensor extends Subsystem {
       m_colorsensor = new ColorSensorV3(i2cPort);
       svitch = false;
       eight = new JoystickButton(j, 8);
-      Colorswitch test = new Colorswitch();
+      Colorswitch test = new Colorswitch(); //This was giving us problems
 
 
   
@@ -39,7 +39,7 @@ public class Colorsensor extends Subsystem {
 
   @Override
   public void periodic() {
-    eight.toggleWhenPressed(test);
+    // eight.toggleWhenPressed(test);
     // This method will be called once per scheduler run
   }
 
