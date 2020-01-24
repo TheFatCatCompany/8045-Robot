@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
@@ -25,6 +26,7 @@ import com.revrobotics.ColorSensorV3;
  * project.
  */
 public class Robot extends TimedRobot {
+
   private Command m_autonomousCommand;
   public static Drivetrain m_drivetrain;
   public static Intake m_taker;
@@ -42,7 +44,8 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
-    
+    I2C.Port i2cPort = I2C.Port.kOnboard;
+    m_colorsensor = new ColorSensorV3(i2cPort);
   }
 
   /**
@@ -58,9 +61,8 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
-    System.out.print(m_colorsensor.getBlue());
-    CommandScheduler.getInstance().run();
-    Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
+   CommandScheduler.getInstance().run();
+ 
   }
 
   /**
@@ -112,6 +114,8 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
   // Moveforward.execute();
+  System.out.print(m_colorsensor.getBlue());
+  Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
     Scheduler.getInstance().run();
   }
 

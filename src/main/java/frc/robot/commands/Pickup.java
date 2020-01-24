@@ -4,17 +4,16 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class Pickup extends Command {
+public class Pickup extends edu.wpi.first.wpilibj.command.Command {
   Joystick j = new Joystick(Constants.joystick);
 
 
@@ -44,4 +43,5 @@ public class Pickup extends Command {
   }
   // A specific button or action on the joystick will control the mechanism (motors) and eventually pick up the ball 
 }
+
 
