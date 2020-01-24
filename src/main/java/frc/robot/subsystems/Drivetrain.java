@@ -39,7 +39,7 @@ public Drivetrain(){
   v4 = new WPI_VictorSPX(Constants.LeftFollower);
   leftMotors = new SpeedControllerGroup(v1, v3);
   rightMotors = new SpeedControllerGroup(v2, v4);
-   leftMotors.setInverted(true);
+  leftMotors.setInverted(true);
   m_myRobot = new DifferentialDrive(rightMotors, leftMotors);   
 }
  
