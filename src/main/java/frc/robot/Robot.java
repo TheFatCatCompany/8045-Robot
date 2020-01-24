@@ -7,18 +7,12 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.commands.Colorswitch;
-import frc.robot.subsystems.Colorsensor;
-import frc.robot.subsystems.Drivetrain;
-import com.revrobotics.ColorSensorV3;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -28,8 +22,6 @@ import com.revrobotics.ColorSensorV3;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  public static Drivetrain m_drivetrain;
-  public static Colorsensor m_colorsensor;
   private RobotContainer m_robotContainer;
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -39,18 +31,13 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
-    m_drivetrain= new Drivetrain();
-    I2C.Port i2cPort = I2C.Port.kOnboard;
-    m_colorsensor = new Colorsensor();
-    // m_colorswitch = new Colorswitch();
-    // Color detectedColor = m_colorsensor.getColor();
+    // m_robotContainer = new RobotContainer();
+    // Color detectedColor = RobotContainer.m_colorsensor.getColor();
     // SmartDashboard.putNumber("Red", detectedColor.red);
     // SmartDashboard.putNumber("Green", detectedColor.green);
     // SmartDashboard.putNumber("Blue", detectedColor.blue);
     // SmartDashboard.putNumber("Confidence", match.confidence);
     // SmartDashboard.putString("Detected Color", colorString);
-    
   }
 
   /**
@@ -116,7 +103,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-  // Moveforward.execute();
     Scheduler.getInstance().run();
   }
 

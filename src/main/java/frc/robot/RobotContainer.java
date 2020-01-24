@@ -12,10 +12,10 @@ import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 
@@ -27,12 +27,13 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public class RobotContainer {
   static I2C.Port i2cPort = I2C.Port.kOnboard;
+  public static ColorSensorV3 m_colorsensor = new ColorSensorV3(i2cPort);
   public static Joystick j = new Joystick(Constants.joystick);
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static final Drivetrain m_drivetrain = new Drivetrain();
-  public static ColorSensorV3 m_colorsensor = new ColorSensorV3(i2cPort);
+  public static Colorwheel m_colorwheel = new Colorwheel();
   public static Colorswitch m_colorswitch = new Colorswitch();
 
   /**

@@ -7,38 +7,15 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.ColorSensorV3;
-
-import frc.robot.Constants;
 import frc.robot.RobotContainer;
-import frc.robot.commands.Colorswitch;
-import edu.wpi.first.wpilibj.I2C;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Colorsensor extends Subsystem {
-  private Joystick j;
-  private ColorSensorV3 m_colorsensor;
-  private boolean svitch;
-  private JoystickButton eight;
-  private Colorswitch test;
-  private I2C.Port i2cPort = I2C.Port.kOnboard;
-  public Colorsensor() {
-Joystick      j = new Joystick(Constants.joystick);
-  ColorSensorV3  m_colorsensor = new ColorSensorV3(i2cPort);
-      svitch = false;
-    JoystickButton  eight = new JoystickButton(j, 8);
-
-
-  
-
-
+public class Colorwheel extends Subsystem {
+  public Colorwheel() {
   }
 
   @Override
   public void periodic() {
-    // eight.toggleWhenPressed(test);
     // This method will be called once per scheduler run
   }
 

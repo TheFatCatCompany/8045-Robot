@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-
-
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
  * constants.  This class should not be used for any other purpose.  All constants should be
@@ -18,11 +16,11 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    // Motor Controller Ports
-    public static final int RightLeader = 0;
-    public static final int RightFollower = 3;
-    public static final int LeftLeader =1;
-    public static final int LeftFollower = 2;
-//    Joystick port
-    public static final int joystick = 0;
+  // Motor Controller Ports
+  public static final int RightLeader = 0;
+  public static final int RightFollower = 3;
+  public static final int LeftLeader =1;
+  public static final int LeftFollower = 2;
+  // Joystick port
+  public static final int joystick = 0;
 }
