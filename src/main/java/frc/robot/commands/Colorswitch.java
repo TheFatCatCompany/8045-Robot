@@ -23,13 +23,17 @@ public class Colorswitch extends Command {
     @Override
     public void initialize() {
         Shuffleboard.getTab("Color Sensor Data");
+
     }
 
     // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Color c = colorsensor.getColor();
-       
+    Shuffleboard.putNumber("Color Sensor Data", c.hashCode());
+    
+
+
 
 
   }
