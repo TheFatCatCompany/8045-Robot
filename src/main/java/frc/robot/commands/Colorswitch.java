@@ -39,7 +39,7 @@ public class Colorswitch extends Command {
       m_colorMatcher.addColorMatch(kYellowTarget); 
     }
 
-    // Called every time the scheduler runs while the command is scheduled.
+  // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Color detectedColor = m_colorsensor.getColor();
@@ -70,4 +70,3 @@ public class Colorswitch extends Command {
     return false;
   }
 }
-    

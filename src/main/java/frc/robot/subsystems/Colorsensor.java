@@ -8,16 +8,12 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.ColorSensorV3;
-import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.commands.Colorswitch;
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.buttons.*;
+
 public class Colorsensor extends Subsystem {
-  /**
-   * Creates a new ExampleSubsystem.
-   */
   private Joystick j;
   private ColorSensorV3 m_colorsensor;
   private boolean svitch;
@@ -39,14 +35,16 @@ public class Colorsensor extends Subsystem {
 
   @Override
   public void periodic() {
+<<<<<<< HEAD
     // eight.toggleWhenPressed(test);
+=======
+>>>>>>> 607c5fdb02a5c3ff105f78f10825746d5b3d3725
     // This method will be called once per scheduler run
   }
 
-    @Override
-    protected void initDefaultCommand() {
-        // TODO Auto-generated method stub
-        setDefaultCommand(new Colorswitch());
-
-    }
+  @Override
+  protected void initDefaultCommand() {
+    // TODO Auto-generated method stub
+    setDefaultCommand(RobotContainer.m_colorswitch);
+  }
 }
