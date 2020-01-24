@@ -26,7 +26,7 @@ import edu.wpi.first.wpilibj2.command.Command;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  I2C.Port i2cPort = I2C.Port.kOnboard;
+  static I2C.Port i2cPort = I2C.Port.kOnboard;
   public static Joystick j = new Joystick(Constants.joystick);
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
