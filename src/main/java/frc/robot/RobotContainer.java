@@ -34,7 +34,7 @@ public class RobotContainer {
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   public static final Drivetrain m_drivetrain = new Drivetrain();
   public static Colorwheel m_colorwheel = new Colorwheel();
-  
+  public static JoystickButton eight = new JoystickButton(j, 8);
   public static Colorswitch m_colorswitch = new Colorswitch();
 
   /**

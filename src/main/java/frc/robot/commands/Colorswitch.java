@@ -2,15 +2,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.commands.Colorswitch.WheelColors;
 import frc.robot.subsystems.Colorwheel;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.util.Color;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Colorswitch extends Command {
+public class Colorswitch extends Command implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
@@ -33,30 +33,38 @@ public class Colorswitch extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    Motorcontrol();
   }
  public void Motorcontrol(){
-   if(Colorreading() == "Green"){
+   if(Colorreading() == WheelColors.Green){
      Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 0); 
    }
     else{
       Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 25); 
     }
   }  
-  
-  public String Colorreading(){
+  public enum WheelColors{
+    Black,
+    Green,
+    Blue,
+    Yellow,
+    Red
+
+  }
+  public WheelColors Colorreading() {
     Color detectedColor = RobotContainer.m_colorsensor.getColor();
-    String colorString;
+    WheelColors colorString;
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
-      colorString = "Blue";
+      colorString = WheelColors.Blue;
     } else if (match.color == kRedTarget) {
-      colorString = "Red";
+      colorString = WheelColors.Red;
     } else if (match.color == kGreenTarget) {
-      colorString = "Green";
+      colorString = WheelColors.Green;
     } else if (match.color == kYellowTarget) {
-      colorString = "Yellow";
+      colorString = WheelColors.Yellow;
     } else {
-      colorString = "Unknown";
+      colorString = WheelColors.Black;
     }
     return(colorString);
   }
@@ -75,4 +83,11 @@ public class Colorswitch extends Command {
   public boolean isFinished() {
     return false;
   }
+}
+
+interface IColorswitch{
+  WheelColors Colorreading();
+
+
+IColorswitch colorswitch = new Colorswitch();
 }

@@ -26,7 +26,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static Drivetrain m_drivetrain;
-  public static Colorwheel m_colorsensor;
+  public static Colorwheel m_colordspinner;
   private RobotContainer m_robotContainer;
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,8 +37,7 @@ public class Robot extends TimedRobot {
     m_drivetrain.intialize();
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
-    // I2C.Port i2cPort = I2C.Port.kOnboard;
-    m_colorsensor = new Colorwheel();
+    m_colordspinner = new Colorwheel();
     
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
