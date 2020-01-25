@@ -9,8 +9,6 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.subsystems.Colorwheel;
@@ -26,7 +24,7 @@ import frc.robot.subsystems.Drivetrain;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   public static Drivetrain m_drivetrain;
-  public static Colorwheel m_colordspinner;
+  public static Colorwheel m_colorspinner;
   private RobotContainer m_robotContainer;
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -37,7 +35,7 @@ public class Robot extends TimedRobot {
     m_drivetrain.intialize();
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
-    m_colordspinner = new Colorwheel();
+    m_colorspinner = new Colorwheel();
     
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our

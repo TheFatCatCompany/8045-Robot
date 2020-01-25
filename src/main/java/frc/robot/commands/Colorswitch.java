@@ -49,7 +49,6 @@ public class Colorswitch extends Command implements IColorswitch {
     Blue,
     Yellow,
     Red
-
   }
   public WheelColors Colorreading() {
     Color detectedColor = RobotContainer.m_colorsensor.getColor();

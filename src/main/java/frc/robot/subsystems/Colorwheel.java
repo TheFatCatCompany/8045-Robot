@@ -10,8 +10,6 @@ package frc.robot.subsystems;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Colorswitch;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Colorwheel extends SubsystemBase {
