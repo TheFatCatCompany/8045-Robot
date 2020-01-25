@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Shootball extends Command {
+public class Shootball extends Command
+{
   Joystick j = new Joystick(Constants.joystick);
 
   public Shootball() {
@@ -35,7 +36,7 @@ public class Shootball extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
+  public void end() {
     Balllauncher.shooter.set(0.0);
   }
 
