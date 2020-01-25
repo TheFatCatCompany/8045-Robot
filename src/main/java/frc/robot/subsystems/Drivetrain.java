@@ -10,12 +10,14 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Move;
 
-public class Drivetrain extends Subsystem {
+public class Drivetrain extends SubsystemBase {
   public DifferentialDrive m_myRobot;
   private WPI_VictorSPX v1;
   private WPI_VictorSPX v2;
@@ -42,11 +44,8 @@ public void intialize(){
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  
   }
 
-  @Override
-  protected void initDefaultCommand() {
-    // TODO Auto-generated method stub
-    setDefaultCommand(new Move());
-  }
+  
 }

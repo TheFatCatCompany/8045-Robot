@@ -7,10 +7,16 @@
 
 package frc.robot;
 
+import com.revrobotics.ColorSensorV3;
+
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.commands.Colorswitch;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
 
@@ -32,11 +38,20 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    m_drivetrain.intialize();
     m_robotContainer = new RobotContainer();
     m_drivetrain= new Drivetrain();
+    m_drivetrain.intialize();
     m_colorspinner = new Colorwheel();
-    
+     I2C.Port i2cPort = I2C.Port.kOnboard;
+   ColorSensorV3 m_colorsensor = new ColorSensorV3(i2cPort);
+   RobotContainer.j = new Joystick(Constants.joystick);
+   RobotContainer.eight = new JoystickButton(RobotContainer.j, 8);
+  //  ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  //  ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
+   Drivetrain m_drivetrain = new Drivetrain();
+   Colorwheel m_colorwheel = new Colorwheel();
+   Colorswitch m_colorswitch = new Colorswitch();
+
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.

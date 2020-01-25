@@ -26,16 +26,16 @@ import edu.wpi.first.wpilibj2.command.Command;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
-  static I2C.Port i2cPort = I2C.Port.kOnboard;
-  public static ColorSensorV3 m_colorsensor = new ColorSensorV3(i2cPort);
-  public static Joystick j = new Joystick(Constants.joystick);
+ public static I2C.Port i2cPort;
+  public static ColorSensorV3 m_colorsensor;
+  public static Joystick j ;
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  public static final Drivetrain m_drivetrain = new Drivetrain();
-  public static Colorwheel m_colorwheel = new Colorwheel();
-  public static JoystickButton eight = new JoystickButton(j, 8);
-  public static Colorswitch m_colorswitch = new Colorswitch();
+  private  ExampleSubsystem m_exampleSubsystem;
+  private ExampleCommand m_autoCommand;
+  public static  Drivetrain m_drivetrain;
+  public static Colorwheel m_colorwheel;
+  public static JoystickButton eight ;
+  public static Colorswitch m_colorswitch ;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -52,8 +52,8 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    JoystickButton eight = new JoystickButton(j, 8);
-    eight.toggleWhenPressed(m_colorswitch);
+    //JoystickButton eight = new JoystickButton(j, 8);
+    // eight.toggleWhenPressed(m_colorswitch);
   }
 
 
