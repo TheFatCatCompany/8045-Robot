@@ -2,7 +2,9 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Colorwheel;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.util.Color;
@@ -16,7 +18,7 @@ public class Colorswitch extends Command {
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
   
   public Colorswitch() {
-    requires(RobotContainer.m_colorwheel);
+    // requires(RobotContainer.m_colorwheel);
   }
 
   // Called when the command is initially scheduled.
@@ -31,6 +33,17 @@ public class Colorswitch extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+  }
+ public void Motorcontrol(){
+   if(Colorreading() == "Green"){
+     Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 0); 
+   }
+    else{
+      Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 25); 
+    }
+  }  
+  
+  public String Colorreading(){
     Color detectedColor = RobotContainer.m_colorsensor.getColor();
     String colorString;
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
@@ -45,8 +58,12 @@ public class Colorswitch extends Command {
     } else {
       colorString = "Unknown";
     }
-    SmartDashboard.putString("Color:", colorString);
+    return(colorString);
   }
+
+  
+
+
 
   // Called once the command ends or is interrupted.
   @Override

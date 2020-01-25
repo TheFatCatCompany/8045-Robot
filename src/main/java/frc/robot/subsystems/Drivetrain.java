@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.commands.Move;
 
 public class Drivetrain extends Subsystem {
@@ -34,6 +35,10 @@ public class Drivetrain extends Subsystem {
     m_myRobot = new DifferentialDrive(rightMotors, leftMotors);   
   }
  
+public void intialize(){
+  RobotContainer.m_drivetrain.m_myRobot.arcadeDrive(0, 0);
+}
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
