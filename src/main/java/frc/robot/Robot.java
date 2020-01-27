@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Colorswitch;
+import frc.robot.commands.Move;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -42,13 +43,12 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_robotContainer = new RobotContainer();
     RobotContainer.drivetrain= new Drivetrain();
-    RobotContainer.drivetrain.intialize();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.joystick = new Joystick(Constants.joystick);
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
-    RobotContainer.colorswitch = new Colorswitch();
+    RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
     RobotContainer.v2 = new WPI_VictorSPX(Constants.LeftLeader);
     RobotContainer.v3 = new WPI_VictorSPX(Constants.RightFollower);
@@ -58,9 +58,11 @@ public class Robot extends TimedRobot {
     RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
     RobotContainer.colorswitch = new Colorswitch();
-    RobotContainer.wheelspinner = new WPI_VictorSPX(0);   
-
-
+    RobotContainer.i2cPort = I2C.Port.kOnboard;
+    RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
+    RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
+    RobotContainer.drivetrain.intialize();
+    RobotContainer.move = new Move();
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
    
@@ -79,6 +81,7 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work.
+    
     CommandScheduler.getInstance().run();
   }
 
@@ -122,6 +125,8 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    RobotContainer.move.schedule();
+    RobotContainer.colorSwitch.schedule();
   }
 
   /**

@@ -3,14 +3,14 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Colorswitch.WheelColors;
-import frc.robot.subsystems.Colorwheel;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.util.Color;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Colorswitch extends Command implements IColorswitch {
+public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
@@ -73,9 +73,7 @@ public class Colorswitch extends Command implements IColorswitch {
 
 
   // Called once the command ends or is interrupted.
-  @Override
-  public void end() {
-  }
+  
  
   // Returns true when the command should end.
   @Override

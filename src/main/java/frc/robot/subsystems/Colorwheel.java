@@ -24,7 +24,6 @@ public class Colorwheel extends SubsystemBase {
 
   @Override
   public void periodic() {
-    System.out.println(RobotContainer.joystick.getButtonCount());
     if(RobotContainer.joystick.getRawButton(8)){
       if(!togglePressed){
           toggleOn = !toggleOn;
