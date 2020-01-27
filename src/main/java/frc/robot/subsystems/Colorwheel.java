@@ -13,21 +13,19 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Colorwheel extends SubsystemBase {
-  public static WPI_VictorSPX wheelspinner;
-  private Colorswitch m_colorswitch;
+
   private boolean toggleOn;
   private boolean togglePressed;
   public Colorwheel() {
      toggleOn = false;
      togglePressed = false;
-     m_colorswitch = new Colorswitch();
-    wheelspinner = new WPI_VictorSPX(0);
+    
   }
 
   @Override
   public void periodic() {
-    System.out.println(RobotContainer.j.getButtonCount());
-    if(RobotContainer.j.getRawButton(1)){
+    System.out.println(RobotContainer.joystick.getButtonCount());
+    if(RobotContainer.joystick.getRawButton(8)){
       if(!togglePressed){
           toggleOn = !toggleOn;
           togglePressed = true;

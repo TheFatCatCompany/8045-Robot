@@ -18,27 +18,14 @@ import frc.robot.RobotContainer;
 import frc.robot.commands.Move;
 
 public class Drivetrain extends SubsystemBase {
-  public DifferentialDrive m_myRobot;
-  private WPI_VictorSPX v1;
-  private WPI_VictorSPX v2;
-  private WPI_VictorSPX v3;
-  private WPI_VictorSPX v4;
-  private SpeedControllerGroup leftMotors;
-  private SpeedControllerGroup rightMotors;  
+  
   
   public Drivetrain() {
-    v1 = new WPI_VictorSPX(Constants.RightLeader);
-    v2 = new WPI_VictorSPX(Constants.LeftLeader);
-    v3 = new WPI_VictorSPX(Constants.RightFollower);
-    v4 = new WPI_VictorSPX(Constants.LeftFollower);
-    leftMotors = new SpeedControllerGroup(v1, v3);
-    rightMotors = new SpeedControllerGroup(v2, v4);
-    leftMotors.setInverted(true);
-    m_myRobot = new DifferentialDrive(rightMotors, leftMotors);   
+   
   }
  
 public void intialize(){
-  RobotContainer.m_drivetrain.m_myRobot.arcadeDrive(0, 0);
+  RobotContainer.myRobot.arcadeDrive(0, 0);
 }
 
   @Override

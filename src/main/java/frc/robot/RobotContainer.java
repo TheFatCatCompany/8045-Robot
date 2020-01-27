@@ -7,11 +7,14 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.Drivetrain;
@@ -26,16 +29,25 @@ import edu.wpi.first.wpilibj2.command.Command;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
- public static I2C.Port i2cPort;
-  public static ColorSensorV3 m_colorsensor;
-  public static Joystick j ;
+  public static I2C.Port i2cPort;
+  public static ColorSensorV3 colorsensor;
+  public static Joystick joystick;
   // The robot's subsystems and commands are defined here...
-  private  ExampleSubsystem m_exampleSubsystem;
-  private ExampleCommand m_autoCommand;
-  public static  Drivetrain m_drivetrain;
-  public static Colorwheel m_colorwheel;
-  public static JoystickButton eight ;
-  public static Colorswitch m_colorswitch ;
+  public static ExampleSubsystem m_exampleSubsystem;
+  public static ExampleCommand m_autoCommand;
+  public static Drivetrain drivetrain;
+  public static Colorwheel colorspinner;
+  public static JoystickButton joystickButton8 ;
+  public static Colorswitch colorswitch ;
+  public static DifferentialDrive myRobot;
+  public static WPI_VictorSPX v1;
+  public static WPI_VictorSPX v2;
+  public static WPI_VictorSPX v3;
+  public static WPI_VictorSPX v4;
+  public static SpeedControllerGroup leftMotors;
+  public static SpeedControllerGroup rightMotors;
+  public static WPI_VictorSPX wheelspinner;
+  public static Colorswitch colorSwitch;  
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

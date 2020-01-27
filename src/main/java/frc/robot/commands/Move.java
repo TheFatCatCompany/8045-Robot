@@ -18,12 +18,12 @@ public class Move extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Robot.m_drivetrain.m_myRobot.arcadeDrive(RobotContainer.j.getX(),RobotContainer.j.getY());    
+    RobotContainer.myRobot.arcadeDrive(RobotContainer.joystick.getX(),RobotContainer.joystick.getY());    
   }
 
   // Called once the command ends or is interrupted.
   public void end() {
-    Robot.m_drivetrain.m_myRobot.arcadeDrive(0, 0);
+    RobotContainer.myRobot.arcadeDrive(0, 0);
   }
   // Returns true when the command should end.
   @Override

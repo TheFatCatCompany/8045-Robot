@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
@@ -14,11 +15,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Colorswitch;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
  *  The VM is configured to automatically run
@@ -29,8 +32,7 @@ import frc.robot.subsystems.Drivetrain;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
-  public static Drivetrain m_drivetrain;
-  public static Colorwheel m_colorspinner;
+
   private RobotContainer m_robotContainer;
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -39,29 +41,29 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_robotContainer = new RobotContainer();
-    m_drivetrain= new Drivetrain();
-    m_drivetrain.intialize();
-    m_colorspinner = new Colorwheel();
-     I2C.Port i2cPort = I2C.Port.kOnboard;
-   ColorSensorV3 m_colorsensor = new ColorSensorV3(i2cPort);
-   RobotContainer.j = new Joystick(Constants.joystick);
-   RobotContainer.eight = new JoystickButton(RobotContainer.j, 8);
-  //  ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  //  ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-   Drivetrain m_drivetrain = new Drivetrain();
-   Colorwheel m_colorwheel = new Colorwheel();
-   Colorswitch m_colorswitch = new Colorswitch();
+    RobotContainer.drivetrain= new Drivetrain();
+    RobotContainer.drivetrain.intialize();
+    RobotContainer.colorspinner = new Colorwheel();
+    RobotContainer.joystick = new Joystick(Constants.joystick);
+    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
+    RobotContainer.drivetrain = new Drivetrain();
+    RobotContainer.colorspinner = new Colorwheel();
+    RobotContainer.colorswitch = new Colorswitch();
+    RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
+    RobotContainer.v2 = new WPI_VictorSPX(Constants.LeftLeader);
+    RobotContainer.v3 = new WPI_VictorSPX(Constants.RightFollower);
+    RobotContainer.v4 = new WPI_VictorSPX(Constants.LeftFollower);
+    RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1,RobotContainer.v3);
+    RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
+    RobotContainer.leftMotors.setInverted(true);
+    RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
+    RobotContainer.colorswitch = new Colorswitch();
+    RobotContainer.wheelspinner = new WPI_VictorSPX(0);   
 
 
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    // m_robotContainer = new RobotContainer();
-    // Color detectedColor = RobotContainer.m_colorsensor.getColor();
-    // SmartDashboard.putNumber("Red", detectedColor.red);
-    // SmartDashboard.putNumber("Green", detectedColor.green);
-    // SmartDashboard.putNumber("Blue", detectedColor.blue);
-    // SmartDashboard.putNumber("Confidence", match.confidence);
-    // SmartDashboard.putString("Detected Color", colorString);
+   
   }
 
   /**

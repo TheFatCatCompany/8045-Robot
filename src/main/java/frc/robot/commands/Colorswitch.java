@@ -37,10 +37,10 @@ public class Colorswitch extends Command implements IColorswitch {
   }
  public void Motorcontrol(){
    if(Colorreading() == WheelColors.Green){
-     Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 0); 
+     RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
    }
     else{
-      Colorwheel.wheelspinner.set(ControlMode.PercentOutput, 25); 
+      RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 
     }
   }  
   public enum WheelColors{
@@ -51,7 +51,7 @@ public class Colorswitch extends Command implements IColorswitch {
     Red
   }
   public WheelColors Colorreading() {
-    Color detectedColor = RobotContainer.m_colorsensor.getColor();
+    Color detectedColor = RobotContainer.colorsensor.getColor();
     WheelColors colorString;
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
