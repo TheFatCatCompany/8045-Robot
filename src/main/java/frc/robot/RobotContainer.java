@@ -50,7 +50,6 @@ public class RobotContainer {
   public static SpeedControllerGroup rightMotors;
   public static WPI_VictorSPX wheelspinner;
   public static Colorswitch colorSwitch;  
-  
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

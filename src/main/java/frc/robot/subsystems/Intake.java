@@ -15,28 +15,17 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Constants;
 import frc.robot.commands.Pickup;
 
-public class Intake extends Subsystem {
- 
-private Pickup test;
-public static WPI_VictorSPX catcher1;
-public static WPI_VictorSPX catcher2;
-public static WPI_VictorSPX conveyerBelt;
-public static SpeedControllerGroup catcher;
+public class Intake extends SubsystemBase {
+  public static WPI_VictorSPX catcher1;
+  public static WPI_VictorSPX catcher2;
+  public static WPI_VictorSPX conveyerBelt;
+  public static SpeedControllerGroup catcher;
 
-public Intake() {
-
+  public Intake() {
   }
-
+  
   @Override
   public void periodic() {
-    
     // This method will be called once per scheduler run
-    one.whileHeld(test);
-  }
-
-  @Override
-  protected void initDefaultCommand() {
-    // TODO Auto-generated method stub
-
   }
 }

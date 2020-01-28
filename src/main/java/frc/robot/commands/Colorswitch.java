@@ -18,7 +18,6 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
   
   public Colorswitch() {
-    // requires(RobotContainer.m_colorwheel);
   }
 
   // Called when the command is initially scheduled.
@@ -35,13 +34,15 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   public void execute() {
     Motorcontrol();
   }
- public void Motorcontrol(){
-   if(Colorreading() == WheelColors.Green){
-     RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
-   } else {
+
+  public void Motorcontrol(){
+    if (Colorreading() == WheelColors.Green){
+      RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
+    } else {
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 
     }
-  }  
+  }
+
   public enum WheelColors{
     Black,
     Green,
@@ -49,6 +50,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     Yellow,
     Red
   }
+
   public WheelColors Colorreading() {
     Color detectedColor = RobotContainer.colorsensor.getColor();
     WheelColors colorString;
@@ -66,6 +68,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     }
     return(colorString);
   }
+  
   // Called once the command ends or is interrupted.
   // Returns true when the command should end.
   @Override

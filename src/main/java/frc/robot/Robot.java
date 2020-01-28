@@ -72,9 +72,6 @@ public class Robot extends TimedRobot {
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
     Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
     Balllauncher.shooter = new WPI_VictorSPX (Constants.shooter);
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
-    // autonomous chooser on the dashboard.
-   
   }
 
   /**
