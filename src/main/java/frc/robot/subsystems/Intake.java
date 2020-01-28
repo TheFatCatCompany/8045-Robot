@@ -27,16 +27,5 @@ public Intake() {
 
   }
 
-  @Override
-  public void periodic() {
-    
-    // This method will be called once per scheduler run
-    one.whileHeld(test);
-  }
-
-  @Override
-  protected void initDefaultCommand() {
-    // TODO Auto-generated method stub
-
-  }
+ 
 }

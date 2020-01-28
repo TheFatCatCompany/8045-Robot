@@ -22,11 +22,4 @@ public static WPI_VictorSPX shooter;
   public Balllauncher() {
 
   }
-
-  @Override
-  public void periodic() {
-  
-    // This method will be called once per scheduler run
-    two.whenPressed(test);
-  }
 }
