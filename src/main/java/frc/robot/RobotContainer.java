@@ -19,8 +19,10 @@ import frc.robot.commands.Colorswitch;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Move;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -39,8 +41,8 @@ public class RobotContainer {
   public static Move move;
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
-  public static JoystickButton joystickButton8 ;
-  public static Colorswitch colorswitch ;
+  public static JoystickButton joystickButton8;
+  public static Colorswitch colorswitch;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
   public static WPI_VictorSPX v2;
@@ -49,7 +51,7 @@ public class RobotContainer {
   public static SpeedControllerGroup leftMotors;
   public static SpeedControllerGroup rightMotors;
   public static WPI_VictorSPX wheelspinner;
-  public static Colorswitch colorSwitch;  
+  public static Colorswitch colorSwitch;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.

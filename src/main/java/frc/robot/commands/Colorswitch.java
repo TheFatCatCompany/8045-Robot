@@ -68,7 +68,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     }
     return(colorString);
   }
-  
+
   // Called once the command ends or is interrupted.
   // Returns true when the command should end.
   @Override
@@ -77,7 +77,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   }
 }
 
-interface IColorswitch{
+interface IColorswitch {
   WheelColors Colorreading();
   IColorswitch colorswitch = new Colorswitch();
 }

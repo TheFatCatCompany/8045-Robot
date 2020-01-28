@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import frc.robot.Constants;
-import frc.robot.Robot;
 import frc.robot.subsystems.Balllauncher;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -26,18 +25,13 @@ public class Shootball extends CommandBase {
   @Override
   public void execute() {
     Balllauncher.shooter.set(127.0);
-
   }
 
   // Called once the command ends or is interrupted.
-  @Override
-  public void end() {
-    Balllauncher.shooter.set(0.0);
-  }
-
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    Balllauncher.shooter.set(0.0);
     return false;
   }
   

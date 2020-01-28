@@ -67,11 +67,11 @@ public class Robot extends TimedRobot {
     RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
     RobotContainer.drivetrain.intialize();
     RobotContainer.move = new Move();
-    Intake.catcher1 = new WPI_VictorSPX (Constants.catcher1);
-    Intake.catcher2 = new WPI_VictorSPX (Constants.catcher2);
+    Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
+    Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
     Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
-    Balllauncher.shooter = new WPI_VictorSPX (Constants.shooter);
+    Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
   }
 
   /**

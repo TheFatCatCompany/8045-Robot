@@ -28,16 +28,13 @@ public class Pickup extends CommandBase {
   }
 
   // Called once the command ends or is interrupted.
-  @Override
-  public void end() {
-    Intake.catcher.set(0.0);
-  }
-
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    Intake.catcher.set(0.0);
     return false;
   }
+
   // A specific button or action on the joystick will control the mechanism (motors) and eventually pick up the ball 
 }
 
