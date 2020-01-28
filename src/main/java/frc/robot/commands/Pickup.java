@@ -11,14 +11,10 @@ import frc.robot.Robot;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj2.command.Command;
 
-public class Pickup extends edu.wpi.first.wpilibj.command.Command {
-  Joystick j = new Joystick(Constants.joystick);
-
-
+public class Pickup extends CommandBase {
   public Pickup() {
-    requires(Robot.m_taker);
+    requires(RobotContainer.m_taker);
   }
 
   // Called when the command is initially scheduled.

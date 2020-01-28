@@ -9,28 +9,22 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.Constants;
 import frc.robot.commands.Pickup;
 
-public class Intake extends Subsystem {
- 
-private Joystick j;
-private Pickup test;
-private JoystickButton one;
-private WPI_VictorSPX catcher1;
-private WPI_VictorSPX catcher2;
-private WPI_VictorSPX conveyerBelt;
-public static SpeedControllerGroup catcher;
+public class Intake extends SubsystemBase {
+  private Joystick j;
+  private Pickup test;
+  private JoystickButton one;
+  private WPI_VictorSPX catcher1;
+  private WPI_VictorSPX catcher2;
+  private WPI_VictorSPX conveyerBelt;
+  public static SpeedControllerGroup catcher;
 
-
-
-
-public Intake() {
+  public Intake() {
   one = new JoystickButton(j,1);
   j = new Joystick(Constants.joystick);
   catcher1 = new WPI_VictorSPX (Constants.catcher1);
@@ -38,14 +32,12 @@ public Intake() {
   catcher = new SpeedControllerGroup(catcher1, catcher2);
   conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
   Pickup test = new Pickup();
-
   }
 
   @Override
   public void periodic() {
-    
-    one.whileHeld(test);
     // This method will be called once per scheduler run
+    one.whileHeld(test);
   }
 
   @Override

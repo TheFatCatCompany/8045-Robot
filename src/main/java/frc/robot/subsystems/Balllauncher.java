@@ -9,39 +9,26 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import frc.robot.commands.Shootball;
 
-
-public class Balllauncher extends Subsystem {
-private Joystick j;
-public static WPI_VictorSPX shooter;
-private JoystickButton two;
-private Shootball test;
-
-
+public class Balllauncher extends SubsystemBase {
+  public static WPI_VictorSPX shooter;
+  private JoystickButton two;
+  private Shootball test;
 
   public Balllauncher() {
-    j = new Joystick(Constants.joystick);
-    shooter = new WPI_VictorSPX (Constants.shooter);
-    two = new JoystickButton(j,2);
+    shooter = new WPI_VictorSPX(Constants.shooter);
+    two = new JoystickButton(RobotContainer.joystick, 2);
     Shootball test = new Shootball();
-
   }
 
   @Override
   public void periodic() {
-    two.whenPressed(test);
     // This method will be called once per scheduler run
-  }
-
-  @Override
-  protected void initDefaultCommand() {
-    // TODO Auto-generated method stub
-    
-
+    two.whenPressed(test);
   }
 }
