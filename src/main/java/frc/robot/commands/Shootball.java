@@ -11,15 +11,10 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.subsystems.Balllauncher;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Shootball extends Command
-{
-  Joystick j = new Joystick(Constants.joystick);
-
+public class Shootball extends CommandBase {
   public Shootball() {
-
   }
 
   // Called when the command is initially scheduled.

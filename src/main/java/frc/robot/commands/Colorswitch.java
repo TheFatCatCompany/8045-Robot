@@ -38,8 +38,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
  public void Motorcontrol(){
    if(Colorreading() == WheelColors.Green){
      RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
-   }
-    else{
+   } else {
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 
     }
   }  
@@ -67,14 +66,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     }
     return(colorString);
   }
-
-  
-
-
-
   // Called once the command ends or is interrupted.
-  
- 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
@@ -84,7 +76,5 @@ public class Colorswitch extends CommandBase implements IColorswitch {
 
 interface IColorswitch{
   WheelColors Colorreading();
-
-
-IColorswitch colorswitch = new Colorswitch();
+  IColorswitch colorswitch = new Colorswitch();
 }
