@@ -17,24 +17,15 @@ import frc.robot.commands.Shootball;
 
 
 public class Balllauncher extends Subsystem {
-private Joystick j;
 public static WPI_VictorSPX shooter;
-private JoystickButton two;
-private Shootball test;
-
-
 
   public Balllauncher() {
-    j = new Joystick(Constants.joystick);
-    shooter = new WPI_VictorSPX (Constants.shooter);
-    two = new JoystickButton(j,2);
-    Shootball test = new Shootball();
 
   }
 
   @Override
   public void periodic() {
-    two.whenPressed(test);
+  
     // This method will be called once per scheduler run
   }
 

@@ -19,7 +19,7 @@ public class Shootball extends Command
   Joystick j = new Joystick(Constants.joystick);
 
   public Shootball() {
-    requires(Robot.m_launcher);
+
   }
 
   // Called when the command is initially scheduled.

@@ -20,8 +20,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Move;
+import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
@@ -64,6 +66,11 @@ public class Robot extends TimedRobot {
     RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
     RobotContainer.drivetrain.intialize();
     RobotContainer.move = new Move();
+    Intake.catcher1 = new WPI_VictorSPX (Constants.catcher1);
+    Intake.catcher2 = new WPI_VictorSPX (Constants.catcher2);
+    Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
+    Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
+    Balllauncher.shooter = new WPI_VictorSPX (Constants.shooter);
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
    
