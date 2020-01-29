@@ -42,7 +42,7 @@ public class RobotContainer {
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
   public static JoystickButton joystickButton8;
-  public static Colorswitch colorswitch;
+  // public static Colorswitch colorswitch;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
   public static WPI_VictorSPX v2;
@@ -69,7 +69,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //JoystickButton eight = new JoystickButton(j, 8);
-    // eight.toggleWhenPressed(m_colorswitch);
+    if(joystick.getRawButton(8)){
+      colorSwitch.schedule();
+    }
+
   }
 
 

@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
     RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
-    RobotContainer.colorswitch = new Colorswitch();
+    // RobotContainer.colorswitch = new Colorswitch();
     RobotContainer.i2cPort = I2C.Port.kOnboard;
     RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
     RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
