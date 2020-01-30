@@ -64,7 +64,7 @@ public class Robot extends TimedRobot {
     // RobotContainer.colorswitch = new Colorswitch();
     RobotContainer.i2cPort = I2C.Port.kOnboard;
     RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
-    RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
+    RobotContainer.wheelspinner = new WPI_VictorSPX(0);   
     RobotContainer.drivetrain.intialize();
     RobotContainer.move = new Move();
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);

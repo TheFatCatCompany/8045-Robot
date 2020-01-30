@@ -69,9 +69,7 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //JoystickButton eight = new JoystickButton(j, 8);
-    if(joystick.getRawButton(8)){
-      colorSwitch.schedule();
-    }
+    
 
   }
 

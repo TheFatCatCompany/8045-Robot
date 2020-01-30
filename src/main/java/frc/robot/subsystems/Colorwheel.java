@@ -14,8 +14,7 @@ public class Colorwheel extends SubsystemBase {
   private boolean toggleOn;
   private boolean togglePressed;
   public Colorwheel() {
-     toggleOn = false;
-     togglePressed = false;
+    
   }
 
   @Override
