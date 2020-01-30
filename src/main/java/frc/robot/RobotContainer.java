@@ -18,6 +18,8 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Move;
+import frc.robot.commands.Pickup;
+import frc.robot.commands.Shootball;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
@@ -52,6 +54,10 @@ public class RobotContainer {
   public static SpeedControllerGroup rightMotors;
   public static WPI_VictorSPX wheelspinner;
   public static Colorswitch colorSwitch;
+  public static Pickup pickup;
+  public static Intake intake;
+  public static Shootball shootball;
+  public static Balllauncher balllauncher;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -69,7 +75,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //JoystickButton eight = new JoystickButton(j, 8);
-    // eight.toggleWhenPressed(m_colorswitch);
+    //eight.toggleWhenPressed(m_colorswitch);
+  
   }
 
 

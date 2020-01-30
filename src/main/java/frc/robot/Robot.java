@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Move;
+import frc.robot.commands.Pickup;
+import frc.robot.commands.Shootball;
 import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
@@ -67,11 +69,16 @@ public class Robot extends TimedRobot {
     RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
     RobotContainer.drivetrain.intialize();
     RobotContainer.move = new Move();
+    RobotContainer.intake = new Intake();
+    RobotContainer.balllauncher = new Balllauncher();
+    RobotContainer.pickup = new Pickup();
+    RobotContainer.shootball = new Shootball();
+    Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
     Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
-    Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+  
   }
 
   /**
@@ -87,6 +94,9 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work. 
+    if(RobotContainer.joystick.getRawButton(3)){
+      RobotContainer.pickup.execute();
+    }
     CommandScheduler.getInstance().run();
   }
 

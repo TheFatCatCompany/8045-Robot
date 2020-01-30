@@ -24,7 +24,9 @@ public class Pickup extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.catcher.set(127.0);
+    Intake.catcher.set(100);
+    System.out.println("3");
+
   }
 
   // Called once the command ends or is interrupted.
