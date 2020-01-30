@@ -94,11 +94,15 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work. 
-    if(RobotContainer.joystick.getRawButton(3)){
+    if (RobotContainer.joystick.getRawButton(3)){
       RobotContainer.pickup.execute();
+    }
+    else if (!RobotContainer.joystick.getRawButton(3)) {
+      RobotContainer.pickup.isFinished();
     }
     CommandScheduler.getInstance().run();
   }
+
 
   /**
    * This function is called once each time the robot enters Disabled mode.
