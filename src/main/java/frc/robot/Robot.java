@@ -48,7 +48,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-    RobotContainer.drivetrain= new Drivetrain();
+    RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.joystick = new Joystick(Constants.joystick);
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
@@ -94,12 +94,6 @@ public class Robot extends TimedRobot {
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
     // block in order for anything in the Command-based framework to work. 
-    if (RobotContainer.joystick.getRawButton(3)){
-      RobotContainer.pickup.execute();
-    }
-    else if (!RobotContainer.joystick.getRawButton(3)) {
-      RobotContainer.pickup.isFinished();
-    }
     CommandScheduler.getInstance().run();
   }
 
@@ -145,7 +139,6 @@ public class Robot extends TimedRobot {
       m_autonomousCommand.cancel();
     }
     RobotContainer.move.schedule();
-    RobotContainer.colorSwitch.schedule();
   }
 
   /**
@@ -153,9 +146,24 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    if (RobotContainer.joystick.getRawButton(Constants.catcher)){
+      RobotContainer.pickup.execute();
+    } else {
+      RobotContainer.pickup.isFinished();
+    }
+    if (RobotContainer.joystick.getRawButton(Constants.color)){
+      RobotContainer.colorswitch.execute();
+    } else {
+      RobotContainer.colorswitch.isFinished();
+    }
+    if (RobotContainer.joystick.getRawButton(Constants.launch)){
+      RobotContainer.shootball.execute();
+    } else {
+      RobotContainer.shootball.isFinished();
+
+    }
     Scheduler.getInstance().run();
   }
-
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.

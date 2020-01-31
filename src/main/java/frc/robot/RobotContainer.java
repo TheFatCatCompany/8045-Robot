@@ -76,9 +76,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
     //JoystickButton eight = new JoystickButton(j, 8);
     //eight.toggleWhenPressed(m_colorswitch);
-  
   }
-
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.

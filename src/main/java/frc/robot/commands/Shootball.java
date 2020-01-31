@@ -34,7 +34,6 @@ public class Shootball extends CommandBase {
     Balllauncher.shooter.set(0.0);
     return false;
   }
-  
 }
 
 

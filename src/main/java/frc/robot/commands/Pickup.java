@@ -8,11 +8,13 @@ package frc.robot.commands;
 
 import frc.robot.Constants;
 import frc.robot.Robot;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class Pickup extends CommandBase {
+  // A specific button or action on the joystick will control the mechanism (motors) and eventually pick up the ball 
   public Pickup() {
   }
 
@@ -24,20 +26,15 @@ public class Pickup extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Intake.catcher.set(100);
-    System.out.println("3");
-
+    Intake.catcher.set(100.0);
   }
 
-  // Called once the command ends or is interrupted.
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     Intake.catcher.set(0.0);
     return false;
   }
-
-  // A specific button or action on the joystick will control the mechanism (motors) and eventually pick up the ball 
 }
 
 

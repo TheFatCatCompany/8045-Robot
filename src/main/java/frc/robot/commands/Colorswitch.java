@@ -43,7 +43,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     }
   }
 
-  public enum WheelColors{
+  public enum WheelColors {
     Black,
     Green,
     Blue,
