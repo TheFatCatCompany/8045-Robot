@@ -39,23 +39,22 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     // ColorChooser();
   }
 
-  public void ColorChooser(){
+  public WheelColors ColorChooser(){
      if(RobotContainer.xController.getAButtonPressed()){
-        System.out.println("Green");
+        return WheelColors.Green;
      }
      else if(RobotContainer.xController.getBButtonPressed()){
-        System.out.println("Red");
+        return WheelColors.Red;
      }
      else if(RobotContainer.xController.getXButtonPressed()){
-      System.out.println("Blue");
+      return WheelColors.Blue;
    }
-   else if(RobotContainer.xController.getYButtonPressed()){
-    System.out.println("Yellow");
- }  
+   else{
+    return WheelColors.Yellow;
+ }
   }
   public void Motorcontrol(){
-    ColorChooser();
-    if (Colorreading() == WheelColors.Green){
+    if (Colorreading() == ColorChooser()){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
     } else {
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 
