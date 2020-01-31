@@ -25,6 +25,8 @@ public final class Constants {
   public static final int catcher1 = 5;
   public static final int catcher2 = 6;
   public static final int shooter = 7;
+  
+
   // Joystick port
   public static final int joystick = 0;
 }

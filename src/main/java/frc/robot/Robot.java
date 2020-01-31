@@ -7,12 +7,15 @@
 
 package frc.robot;
 
+import java.util.Scanner;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -46,6 +49,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+   Colorswitch.xController = new XboxController(1);
     RobotContainer.drivetrain= new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.joystick = new Joystick(Constants.joystick);
@@ -59,7 +63,6 @@ public class Robot extends TimedRobot {
     RobotContainer.v4 = new WPI_VictorSPX(Constants.LeftFollower);
     RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1,RobotContainer.v3);
     RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
-    RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
     // RobotContainer.colorswitch = new Colorswitch();
     RobotContainer.i2cPort = I2C.Port.kOnboard;
@@ -123,6 +126,10 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    System.out.println("Please enter a color(Black, Green, Blue, Red): ");
+    Scanner myObj = new Scanner(System.in);
+    String colorinput = myObj.nextLine();
+
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -139,6 +146,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+   
     Scheduler.getInstance().run();
   }
 

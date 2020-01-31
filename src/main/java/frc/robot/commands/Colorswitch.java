@@ -1,6 +1,5 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Colorswitch.WheelColors;
 
@@ -9,32 +8,51 @@ import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button; 
 public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+  public static XboxController xController;
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-  
+
   public Colorswitch() {
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
     m_colorMatcher.addColorMatch(kYellowTarget); 
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Motorcontrol();
+    ColorChooser();
   }
 
+  public void ColorChooser(){
+     if(xController.getAButtonPressed()){
+        System.out.println("Green");
+     }
+     else if(xController.getBButtonPressed()){
+        System.out.println("Red");
+     }
+     else if(xController.getXButtonPressed()){
+      System.out.println("Blue");
+   }
+   else if(xController.getYButtonPressed()){
+    System.out.println("Yellow");
+ }  
+  }
   public void Motorcontrol(){
     if (Colorreading() == WheelColors.Green){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
