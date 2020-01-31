@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
-   Colorswitch.xController = new XboxController(1);
+   RobotContainer.xController = new XboxController(1);
     RobotContainer.drivetrain= new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.joystick = new Joystick(Constants.joystick);
@@ -126,9 +126,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    System.out.println("Please enter a color(Black, Green, Blue, Red): ");
-    Scanner myObj = new Scanner(System.in);
-    String colorinput = myObj.nextLine();
+
 
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
@@ -146,7 +144,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-   
     Scheduler.getInstance().run();
   }
 

@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
-  public static XboxController xController;
+ 
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
@@ -36,24 +36,25 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   @Override
   public void execute() {
     Motorcontrol();
-    ColorChooser();
+    // ColorChooser();
   }
 
   public void ColorChooser(){
-     if(xController.getAButtonPressed()){
+     if(RobotContainer.xController.getAButtonPressed()){
         System.out.println("Green");
      }
-     else if(xController.getBButtonPressed()){
+     else if(RobotContainer.xController.getBButtonPressed()){
         System.out.println("Red");
      }
-     else if(xController.getXButtonPressed()){
+     else if(RobotContainer.xController.getXButtonPressed()){
       System.out.println("Blue");
    }
-   else if(xController.getYButtonPressed()){
+   else if(RobotContainer.xController.getYButtonPressed()){
     System.out.println("Yellow");
  }  
   }
   public void Motorcontrol(){
+    ColorChooser();
     if (Colorreading() == WheelColors.Green){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
     } else {

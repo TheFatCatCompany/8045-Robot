@@ -16,7 +16,7 @@ public class Move extends CommandBase {
   @Override
   public void execute() {
     RobotContainer.myRobot.arcadeDrive(RobotContainer.joystick.getX(),RobotContainer.joystick.getY());
-    System.out.println(RobotContainer.joystick.getX() + " " + RobotContainer.joystick.getY());    
+    // System.out.println(RobotContainer.joystick.getX() + " " + RobotContainer.joystick.getY());    
   }
 
   // Called once the command ends or is interrupted.
