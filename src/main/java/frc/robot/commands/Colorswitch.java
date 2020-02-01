@@ -21,10 +21,12 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   public Colorswitch() {
   }
 
+  private WheelColors defaultcolor = WheelColors.Yellow;
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     
+    defaultcolor = WheelColors.Yellow;
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
@@ -40,17 +42,22 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   }
 
   public WheelColors ColorChooser(){
+    
      if(RobotContainer.xController.getAButtonPressed()){
-        return WheelColors.Green;
+      defaultcolor = WheelColors.Green;
+      return WheelColors.Green;
      }
      else if(RobotContainer.xController.getBButtonPressed()){
-        return WheelColors.Red;
+      defaultcolor = WheelColors.Red;
+      return WheelColors.Red;
      }
      else if(RobotContainer.xController.getXButtonPressed()){
+      defaultcolor = WheelColors.Blue;
       return WheelColors.Blue;
    }
    else{
-    return WheelColors.Yellow;
+    // defaultcolor = WheelColors.Yellow;
+    return defaultcolor;
  }
   }
   public void Motorcontrol(){
