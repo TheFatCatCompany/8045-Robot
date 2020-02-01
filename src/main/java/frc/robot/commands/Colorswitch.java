@@ -25,7 +25,6 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
     defaultcolor = WheelColors.Yellow;
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
