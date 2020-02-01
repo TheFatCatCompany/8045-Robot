@@ -78,7 +78,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     joystickButton8.toggleWhenPressed(colorSwitch);
-    joystickButton3.toggleWhenPressed(pickup);
+    joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
   }
 

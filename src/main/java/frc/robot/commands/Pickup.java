@@ -24,11 +24,15 @@ public class Pickup extends CommandBase {
   @Override
   public void initialize() {
   }
-
+//Allows you to set the speed of the Intake motor
+  private double setSpeed(){
+    return -RobotContainer.joystick.getThrottle() * 100 + 100;
+}
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = IS_RUNNING ? 0.0: 127.0; 
+    setSpeed();
+    double speed = IS_RUNNING ? 0.0: setSpeed(); 
     Intake.catcher.set(speed);
     IS_RUNNING = ! IS_RUNNING;
     
