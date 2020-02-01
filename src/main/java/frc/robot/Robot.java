@@ -13,11 +13,11 @@ import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.ScheduleCommand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
@@ -29,29 +29,33 @@ import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
- *  The VM is configured to automatically run
- * this class, and to call the functions corresponding to each mode, as des
- * ribed in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as des ribed in the TimedRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
 
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
+
   /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // Instantiate our RobotContainer. This will perform all our button bindings,
+    // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.joystick = new Joystick(Constants.joystick);
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
+    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, 3);
+    RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.colorSwitch = new Colorswitch();
@@ -59,14 +63,14 @@ public class Robot extends TimedRobot {
     RobotContainer.v2 = new WPI_VictorSPX(Constants.LeftLeader);
     RobotContainer.v3 = new WPI_VictorSPX(Constants.RightFollower);
     RobotContainer.v4 = new WPI_VictorSPX(Constants.LeftFollower);
-    RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1,RobotContainer.v3);
+    RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1, RobotContainer.v3);
     RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
     RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
     RobotContainer.colorswitch = new Colorswitch();
     RobotContainer.i2cPort = I2C.Port.kOnboard;
     RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
-    RobotContainer.wheelspinner = new WPI_VictorSPX(5);   
+    RobotContainer.wheelspinner = new WPI_VictorSPX(5);
     RobotContainer.drivetrain.intialize();
     RobotContainer.move = new Move();
     RobotContainer.intake = new Intake();
@@ -78,25 +82,29 @@ public class Robot extends TimedRobot {
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
     Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
-  
+
   }
 
   /**
-   *This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
-    // block in order for anything in the Command-based framework to work. 
+    // Runs the Scheduler. This is responsible for polling buttons, adding
+    // newly-scheduled
+    // commands, running already-scheduled commands, removing finished or
+    // interrupted commands,
+    // and running subsystem periodic() methods. This must be called from the
+    // robot's periodic
+    // block in order for anything in the Command-based framework to work.
     CommandScheduler.getInstance().run();
   }
-
 
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -107,7 +115,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    Scheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -146,23 +154,23 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-    if (RobotContainer.joystick.getRawButton(Constants.catcher)){
-      RobotContainer.pickup.execute();
-    } else {
-      RobotContainer.pickup.isFinished();
-    }
-    if (RobotContainer.joystick.getRawButton(Constants.color)){
-      RobotContainer.colorswitch.execute();
-    } else {
-      RobotContainer.colorswitch.isFinished();
-    }
-    if (RobotContainer.joystick.getRawButton(Constants.launch)){
-      RobotContainer.shootball.execute();
-    } else {
-      RobotContainer.shootball.isFinished();
+  //   if (RobotContainer.joystick.getRawButton(Constants.catcher)){
+  //     RobotContainer.pickup.execute();
+  //   } else {
+  //     RobotContainer.pickup.isFinished();
+  //   }
+  //   if (RobotContainer.joystick.getRawButton(Constants.color)){
+  //     RobotContainer.colorswitch.execute();
+  //   } else {
+  //     RobotContainer.colorswitch.isFinished();
+  //   }
+  //   if (RobotContainer.joystick.getRawButton(Constants.launch)){
+  //     RobotContainer.shootball.execute();
+  //   } else {
+  //     RobotContainer.shootball.isFinished();
 
-    }
-    Scheduler.getInstance().run();
+  //   }
+  //   CommandScheduler.getInstance().cancelAll();
   }
   @Override
   public void testInit() {
