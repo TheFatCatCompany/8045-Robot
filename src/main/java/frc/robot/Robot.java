@@ -54,8 +54,8 @@ public class Robot extends TimedRobot {
     RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.joystick = new Joystick(Constants.joystick);
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
+    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, 1);
     RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, 3);
-    RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);

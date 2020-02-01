@@ -73,6 +73,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
     return false;
   }
 }

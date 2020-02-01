@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Shootball extends CommandBase {
+  private static Boolean IS_RUNNING = false;
   public Shootball() {
   }
 
@@ -20,19 +21,24 @@ public class Shootball extends CommandBase {
   @Override
   public void initialize() {
   }
-
+  
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    Balllauncher.shooter.set(127.0);
+    //Balllauncher.shooter.getMotorOutputPercent();
+    double speed = IS_RUNNING ? 0.0: 127.0; 
+    Balllauncher.shooter.set(speed);
+    IS_RUNNING = ! IS_RUNNING;
+    //System.out.println("I'm working");
   }
 
   // Called once the command ends or is interrupted.
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    Balllauncher.shooter.set(0.0);
-    return false;
+    // Balllauncher.shooter.set(0.0);
+    //System.out.println("I'm not working");
+    return true;
   }
 }
 

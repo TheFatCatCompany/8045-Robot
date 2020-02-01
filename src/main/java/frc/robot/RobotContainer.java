@@ -26,6 +26,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -44,8 +45,8 @@ public class RobotContainer {
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
   public static JoystickButton joystickButton8;
+  public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;
-  public static JoystickButton joystickButton4;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
   public static WPI_VictorSPX v2;
@@ -75,10 +76,10 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    // JoystickButton eight = new JoystickButton(j, 8);
-    joystickButton8.whenPressed(colorSwitch);
-    joystickButton3.whenActive(pickup);
-    joystickButton4.whenActive(shootball);
+
+    joystickButton8.toggleWhenPressed(colorSwitch);
+    joystickButton3.toggleWhenPressed(pickup);
+    joystickButton1.toggleWhenPressed(shootball);
   }
 
   /**
