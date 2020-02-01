@@ -46,7 +46,6 @@ public class RobotContainer {
   public static JoystickButton joystickButton8;
   public static JoystickButton joystickButton3;
   public static JoystickButton joystickButton4;
-  public static Colorswitch colorswitch;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
   public static WPI_VictorSPX v2;

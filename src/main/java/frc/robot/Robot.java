@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import edu.wpi.first.wpilibj2.command.ScheduleCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Move;
@@ -38,7 +37,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 public class Robot extends TimedRobot {
 
   private Command m_autonomousCommand;
-  private RobotContainer m_robotContainer;
+  private RobotContainer robotContainer;
 
   /**
    * This function is run when the robot is first started up and should be used
@@ -49,16 +48,16 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
+    RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.joystick = new Joystick(Constants.joystick);
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
     RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, 3);
     RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
-    RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
     RobotContainer.v2 = new WPI_VictorSPX(Constants.LeftLeader);
     RobotContainer.v3 = new WPI_VictorSPX(Constants.RightFollower);
@@ -67,7 +66,6 @@ public class Robot extends TimedRobot {
     RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
     RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
-    RobotContainer.colorswitch = new Colorswitch();
     RobotContainer.i2cPort = I2C.Port.kOnboard;
     RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
     RobotContainer.wheelspinner = new WPI_VictorSPX(5);
@@ -82,7 +80,7 @@ public class Robot extends TimedRobot {
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
     Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
-
+    robotContainer = new RobotContainer();
   }
 
   /**
@@ -123,7 +121,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
+    m_autonomousCommand = robotContainer.getAutonomousCommand();
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
