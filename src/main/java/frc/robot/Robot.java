@@ -15,6 +15,7 @@ import com.revrobotics.ColorSensorV3;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -50,8 +51,7 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
-   RobotContainer.xController = new XboxController(1);
+    RobotContainer.xController = new XboxController(1);
     RobotContainer.drivetrain= new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.colorSwitch = new Colorswitch();
@@ -139,8 +139,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-
-
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
@@ -156,24 +154,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-  //   if (RobotContainer.joystick.getRawButton(Constants.catcher)){
-  //     RobotContainer.pickup.execute();
-  //   } else {
-  //     RobotContainer.pickup.isFinished();
-  //   }
-  //   if (RobotContainer.joystick.getRawButton(Constants.color)){
-  //     RobotContainer.colorswitch.execute();
-  //   } else {
-  //     RobotContainer.colorswitch.isFinished();
-  //   }
-  //   if (RobotContainer.joystick.getRawButton(Constants.launch)){
-  //     RobotContainer.shootball.execute();
-  //   } else {
-  //     RobotContainer.shootball.isFinished();
-
-  //   }
-  //   CommandScheduler.getInstance().cancelAll();
   }
+
   @Override
   public void testInit() {
     // Cancels all running commands at the start of test mode.
