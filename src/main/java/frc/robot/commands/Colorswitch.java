@@ -9,34 +9,59 @@ import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button; 
 public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+ 
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-  
+
   public Colorswitch() {
   }
 
+  private WheelColors defaultcolor = WheelColors.Yellow;
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    defaultcolor = WheelColors.Yellow;
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
     m_colorMatcher.addColorMatch(kYellowTarget); 
+
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Motorcontrol();
+    // ColorChooser();
   }
 
+  public WheelColors ColorChooser(){
+    
+     if(RobotContainer.xController.getAButtonPressed()){
+      defaultcolor = WheelColors.Green;
+      return WheelColors.Green;
+     }
+     else if(RobotContainer.xController.getBButtonPressed()){
+      defaultcolor = WheelColors.Red;
+      return WheelColors.Red;
+     }
+     else if(RobotContainer.xController.getXButtonPressed()){
+      defaultcolor = WheelColors.Blue;
+      return WheelColors.Blue;
+   }
+   else{
+    // defaultcolor = WheelColors.Yellow;
+    return defaultcolor;
+ }
+  }
   public void Motorcontrol(){
-    if (Colorreading() == WheelColors.Green){
+    if (Colorreading() == ColorChooser()){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
     } else {
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 

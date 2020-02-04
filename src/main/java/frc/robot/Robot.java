@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import java.util.Scanner;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
@@ -48,8 +50,9 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer. This will perform all our button bindings,
     // and put our
     // autonomous chooser on the dashboard.
-    
-    RobotContainer.drivetrain = new Drivetrain();
+    m_robotContainer = new RobotContainer();
+   RobotContainer.xController = new XboxController(1);
+    RobotContainer.drivetrain= new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.joystick = new Joystick(Constants.joystick);
@@ -64,7 +67,6 @@ public class Robot extends TimedRobot {
     RobotContainer.v4 = new WPI_VictorSPX(Constants.LeftFollower);
     RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1, RobotContainer.v3);
     RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
-    RobotContainer.leftMotors.setInverted(true);
     RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
     RobotContainer.i2cPort = I2C.Port.kOnboard;
     RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
@@ -137,6 +139,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+
+
     // This makes sure that the autonomous stops running when
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove

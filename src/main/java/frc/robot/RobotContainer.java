@@ -11,8 +11,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.ExampleCommand;
@@ -35,6 +38,7 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  * (including subsystems, commands, and button mappings) should be declared here.
  */
 public class RobotContainer {
+  public static XboxController xController;
   public static I2C.Port i2cPort;
   public static ColorSensorV3 colorsensor;
   public static Joystick joystick;
@@ -47,6 +51,7 @@ public class RobotContainer {
   public static JoystickButton joystickButton8;
   public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;
+  // public static Colorswitch colorswitch;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
   public static WPI_VictorSPX v2;
@@ -76,7 +81,6 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-
     joystickButton8.toggleWhenPressed(colorSwitch);
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);

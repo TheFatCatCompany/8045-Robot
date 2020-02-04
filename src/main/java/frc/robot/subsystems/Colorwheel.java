@@ -11,11 +11,10 @@ import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Colorwheel extends SubsystemBase {
-  private boolean toggleOn;
-  private boolean togglePressed;
+ 
   public Colorwheel() {
-     toggleOn = false;
-     togglePressed = false;
+    
+     
   }
 
   @Override
