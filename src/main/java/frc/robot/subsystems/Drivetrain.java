@@ -7,20 +7,28 @@
 
 package frc.robot.subsystems;
 
+
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
+
 public class Drivetrain extends SubsystemBase {
+  
+  
   public Drivetrain() {
+   
   }
  
-  public void intialize(){
-    RobotContainer.myRobot.arcadeDrive(0, 0);
-    // RobotContainer.joystick.toggleWhenActive(new Move(), true);
-  }
+public void intialize(){
+  RobotContainer.myRobot.arcadeDrive(0, 0);
+  // RobotContainer.joystick..toggleWhenActive(new Move(), true);
+}
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+  
   }
+
+  
 }
