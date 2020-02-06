@@ -1,9 +1,7 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.commands.Colorswitch.WheelColors;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
@@ -31,36 +29,35 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
     m_colorMatcher.addColorMatch(kRedTarget);
-    m_colorMatcher.addColorMatch(kYellowTarget); 
-
+    m_colorMatcher.addColorMatch(kYellowTarget);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     Motorcontrol();
-    // ColorChooser();
   }
 
   public WheelColors ColorChooser(){
-    
-     if(RobotContainer.xController.getAButtonPressed()){
+    if (RobotContainer.xController.getAButtonPressed()){
       defaultcolor = WheelColors.Green;
       return WheelColors.Green;
-     }
-     else if(RobotContainer.xController.getBButtonPressed()){
+    }
+    else if (RobotContainer.xController.getBButtonPressed()){
       defaultcolor = WheelColors.Red;
       return WheelColors.Red;
-     }
-     else if(RobotContainer.xController.getXButtonPressed()){
+    }
+    else if (RobotContainer.xController.getXButtonPressed()){
       defaultcolor = WheelColors.Blue;
       return WheelColors.Blue;
-   }
-   else{
-    // defaultcolor = WheelColors.Yellow;
+    } 
+    else if (RobotContainer.xController.getYButtonPressed()){
+      defaultcolor = WheelColors.Yellow;
+      return WheelColors.Yellow;
+    }
     return defaultcolor;
- }
   }
+
   public void Motorcontrol(){
     if (Colorreading() == ColorChooser()){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 

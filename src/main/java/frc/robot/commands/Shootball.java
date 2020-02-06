@@ -25,19 +25,15 @@ public class Shootball extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //Balllauncher.shooter.getMotorOutputPercent();
     double speed = IS_RUNNING ? 0.0: 127.0; 
     Balllauncher.shooter.set(speed);
-    IS_RUNNING = ! IS_RUNNING;
-    //System.out.println("I'm working");
+    IS_RUNNING = !IS_RUNNING;
   }
 
   // Called once the command ends or is interrupted.
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    // Balllauncher.shooter.set(0.0);
-    //System.out.println("I'm not working");
     return true;
   }
 }
