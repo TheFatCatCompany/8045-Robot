@@ -11,10 +11,8 @@ import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Colorwheel extends SubsystemBase {
- 
-  public Colorwheel() {
-    
-     
+  
+  public Colorwheel() {  
   }
 
   @Override
