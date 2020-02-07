@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Cancel;
 import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
@@ -52,13 +53,14 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     RobotContainer.xController = new XboxController(1);
-    RobotContainer.drivetrain= new Drivetrain();
+    RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.joystick = new Joystick(Constants.joystick);
-    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
-    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, 1);
-    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, 3);
+    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, Constants.color);
+    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, Constants.launch);
+    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, Constants.catcher);
+    RobotContainer.joystickButton11 = new JoystickButton(RobotContainer.joystick, Constants.cancel);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
@@ -77,6 +79,7 @@ public class Robot extends TimedRobot {
     RobotContainer.balllauncher = new Balllauncher();
     RobotContainer.pickup = new Pickup();
     RobotContainer.shootball = new Shootball();
+    RobotContainer.cancel = new Cancel();
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
