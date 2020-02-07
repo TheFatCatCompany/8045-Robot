@@ -10,9 +10,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
-import frc.robot.commands.Shootball;
+
 
 public class Balllauncher extends SubsystemBase {
   public static WPI_VictorSPX shooter;
@@ -25,7 +23,5 @@ public class Balllauncher extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-public class gate {
-}
 }
 

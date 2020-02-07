@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.Colorswitch;
+import frc.robot.commands.DrivePreset;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
@@ -48,6 +49,7 @@ public class RobotContainer {
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
   public static JoystickButton joystickButton8;
+  public static JoystickButton joystickButton4;
   public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;
   // public static Colorswitch colorswitch;
@@ -83,6 +85,7 @@ public class RobotContainer {
     joystickButton8.toggleWhenPressed(colorSwitch);
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
+    joystickButton4.whenPressed(new DrivePreset());
   }
 
   /**

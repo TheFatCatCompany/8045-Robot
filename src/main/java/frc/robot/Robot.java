@@ -14,6 +14,7 @@ import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -78,6 +79,8 @@ public class Robot extends TimedRobot {
     RobotContainer.pickup = new Pickup();
     RobotContainer.shootball = new Shootball();
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+    Balllauncher.gate = new Servo(0);
+    Intake.intakeServo = new Servo(1);
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);

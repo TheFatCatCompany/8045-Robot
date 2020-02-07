@@ -7,37 +7,39 @@
 
 package frc.robot.commands;
 
-import frc.robot.Constants;
-import frc.robot.subsystems.Balllauncher;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 
-public class Shootball extends CommandBase {
-  private static Boolean IS_RUNNING = false;
-  public Shootball() {
+public class DrivePreset extends CommandBase {
+  /**
+   * Creates a new DrivePreset.
+   */
+  public DrivePreset() {
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
-  
+
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double angle = IS_RUNNING ? 0.0: 180;
-    double speed = IS_RUNNING ? 0.0: 127.0;
-    Balllauncher.shooter.set(speed);
-    Balllauncher.gate.setAngle(angle);
-    IS_RUNNING = !IS_RUNNING;
+    RobotContainer.balllauncher.gate.setAngle(0);
+    RobotContainer.intake.intakeServo.setAngle(0);
+    RobotContainer.balllauncher.shooter.set(0);
+    RobotContainer.intake.catcher1.set(0);
   }
 
   // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+  }
+
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }
-
-

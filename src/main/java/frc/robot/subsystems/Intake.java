@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Servo;
 import frc.robot.Constants;
 import frc.robot.commands.Pickup;
 
@@ -19,6 +20,7 @@ public class Intake extends SubsystemBase {
   public static WPI_VictorSPX catcher2;
   public static WPI_VictorSPX conveyerBelt;
   public static SpeedControllerGroup catcher;
+  public static Servo intakeServo;
 
   public Intake() {
   }
