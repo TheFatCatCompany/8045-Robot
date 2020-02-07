@@ -15,7 +15,7 @@ import frc.robot.commands.Shootball;
 
 public class Balllauncher extends SubsystemBase {
   public static WPI_VictorSPX shooter;
-
+  public static Servo gate;
   public Balllauncher() {
   }
 
@@ -24,3 +24,4 @@ public class Balllauncher extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 }
+
