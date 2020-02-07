@@ -19,8 +19,8 @@ public class Intake extends SubsystemBase {
   public static WPI_VictorSPX catcher1;
   public static WPI_VictorSPX catcher2;
   public static WPI_VictorSPX conveyerBelt;
-  public static SpeedControllerGroup catcher;
   public static Servo intakeServo;
+  public static SpeedControllerGroup catcher;
 
   public Intake() {
   }
