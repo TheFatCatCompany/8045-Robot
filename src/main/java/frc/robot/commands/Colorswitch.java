@@ -12,17 +12,19 @@ import edu.wpi.first.wpilibj.XboxController.Button;
 public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
+  private Color storedColor;
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
 
-  public Colorswitch() {
+  public Colorswitch( ) {
   }
 
   private WheelColors defaultcolor = WheelColors.Yellow;
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
     defaultcolor = WheelColors.Yellow;
     m_colorMatcher.addColorMatch(kBlueTarget);
     m_colorMatcher.addColorMatch(kGreenTarget);
@@ -78,17 +80,59 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
       colorString = WheelColors.Blue;
+     
     } else if (match.color == kRedTarget) {
       colorString = WheelColors.Red;
     } else if (match.color == kGreenTarget) {
       colorString = WheelColors.Green;
     } else if (match.color == kYellowTarget) {
       colorString = WheelColors.Yellow;
+
     } else {
       colorString = WheelColors.Black;
     }
     return(colorString);
   }
+
+  public double countSpin()
+  {
+    Color detectedColor = RobotContainer.colorsensor.getColor();
+    ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
+    double count = 0;
+    if (match.color == kBlueTarget) {
+      if(storedColor != match.color)
+      {
+        storedColor = match.color;
+        count += 1/8;
+      }
+     
+    } else if (match.color == kRedTarget) {
+      if(storedColor != match.color)
+      {
+        storedColor = match.color;
+        count += 1/8;
+      }
+    } else if (match.color == kGreenTarget) {
+      if(storedColor != match.color)
+      {
+        storedColor = match.color;
+        count += 1/8;
+      }
+    } else if (match.color == kYellowTarget) {
+      if(storedColor != match.color)
+      {
+        storedColor = match.color;
+        count += 1/8;
+      }
+
+    } 
+    
+    return count;
+      
+    }
+    
+  
+  
 
   // Called once the command ends or is interrupted.
   // Returns true when the command should end.
