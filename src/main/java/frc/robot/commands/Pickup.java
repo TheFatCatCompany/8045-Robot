@@ -12,7 +12,7 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.Intake;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
-
+// buttons are 5 and 6
 public class Pickup extends CommandBase {
   private static Boolean IS_RUNNING = false;
 
