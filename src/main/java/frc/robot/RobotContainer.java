@@ -50,6 +50,8 @@ public class RobotContainer {
   public static Colorwheel colorspinner;
   public static Cancel cancel;
   public static JoystickButton joystickButton8;
+  public static JoystickButton joystickButton10;
+  public static JoystickButton joystickButton12;
   public static JoystickButton joystickButton4;
   public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;

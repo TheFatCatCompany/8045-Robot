@@ -31,5 +31,7 @@ public final class Constants {
   public static final int catcher = 3;
   public static final int launch = 1;
   public static final int color = 8;
+  public static final int slow15 = 10;
+  public static final int fast = 12;
   public static final int cancel = 11;
 }
