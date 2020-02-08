@@ -30,9 +30,9 @@ public class IntakeLifter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.xController.getRawButtonPressed(5)){
+    
     double angle = IS_RUNNING ? 0.0: 90; 
-    Intake.intakeServo.setAngle(angle);}
+    Intake.intakeServo.setAngle(angle);
   }
 
   // Called once the command ends or is interrupted.
