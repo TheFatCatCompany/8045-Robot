@@ -87,7 +87,7 @@ public class RobotContainer {
     joystickButton8.toggleWhenPressed(colorSwitch);
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
-    joystickButton4.whenPressed(new DrivePreset());
+    joystickButton4.whileActiveContinuous(new DrivePreset());
     joystickButton11.whileHeld(cancel);
   }
 

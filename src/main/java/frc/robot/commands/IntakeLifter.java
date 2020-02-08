@@ -9,12 +9,15 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
+import frc.robot.subsystems.Intake;
 
-public class DrivePreset extends CommandBase {
+public class IntakeLifter extends CommandBase {
   /**
-   * Creates a new DrivePreset.
-   */
-  public DrivePreset() {
+   * Creates a new IntakeLifter.
+   */    
+  private static Boolean IS_RUNNING = false;
+
+  public IntakeLifter() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -26,11 +29,9 @@ public class DrivePreset extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
-    RobotContainer.balllauncher.gate.setAngle(0);
-    RobotContainer.intake.intakeServo.setAngle(0);
-    RobotContainer.balllauncher.shooter.set(0);
-    RobotContainer.intake.catcher1.set(0);
+    if(RobotContainer.xController.getRawButtonPressed(3)){
+    double angle = IS_RUNNING ? 0.0: 90; 
+    Intake.intakeServo.setAngle(angle);}
   }
 
   // Called once the command ends or is interrupted.
