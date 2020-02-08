@@ -18,6 +18,7 @@ public class IntakeLifter extends CommandBase {
   private static Boolean IS_RUNNING = false;
 
   public IntakeLifter() {
+
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -29,7 +30,7 @@ public class IntakeLifter extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.xController.getRawButtonPressed(3)){
+    if(RobotContainer.xController.getRawButtonPressed(5)){
     double angle = IS_RUNNING ? 0.0: 90; 
     Intake.intakeServo.setAngle(angle);}
   }
@@ -37,6 +38,7 @@ public class IntakeLifter extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
+    Intake.intakeServo.setAngle(0.0);
   }
 
   // Returns true when the command should end.
