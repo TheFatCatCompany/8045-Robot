@@ -61,6 +61,7 @@ public class Robot extends TimedRobot {
     RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, Constants.color);
     RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, Constants.launch);
     RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, Constants.catcher);
+    RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
     RobotContainer.joystickButton11 = new JoystickButton(RobotContainer.joystick, Constants.cancel);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
