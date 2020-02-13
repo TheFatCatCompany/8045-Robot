@@ -25,8 +25,10 @@ public class Shootball extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = IS_RUNNING ? 0.0: 127.0; 
+    double angle = IS_RUNNING ? 0.0: 180;
+    double speed = IS_RUNNING ? 0.0: 127.0;
     Balllauncher.shooter.set(speed);
+    Balllauncher.gate.setAngle(angle);
     IS_RUNNING = !IS_RUNNING;
   }
 

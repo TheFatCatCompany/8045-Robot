@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
 public class Move extends CommandBase {
+  private double spdMult = 0.7;
   public Move() {
   }
 
@@ -15,7 +16,19 @@ public class Move extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.myRobot.arcadeDrive(RobotContainer.joystick.getX(),RobotContainer.joystick.getY());
+    if(RobotContainer.joystick.getRawButtonPressed(8))
+    {
+      spdMult = 0.3;    
+    }
+    else if(RobotContainer.joystick.getRawButtonPressed(10))
+    {
+      spdMult = 0.7;
+    }
+    else if(RobotContainer.joystick.getRawButtonPressed(12))
+    {
+      spdMult = 1.0;
+    }
+    RobotContainer.myRobot.arcadeDrive(spdMult*RobotContainer.joystick.getX(),spdMult*RobotContainer.joystick.getY());
   }
 
   // Called once the command ends or is interrupted.

@@ -4,18 +4,22 @@
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
+
 package frc.robot.commands;
 
-import frc.robot.Constants;
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Pickup extends CommandBase {
+public class IntakeLifter extends CommandBase {
+  /**
+   * Creates a new IntakeLifter.
+   */    
   private static Boolean IS_RUNNING = false;
 
-  // A specific button or action on the joystick will control the mechanism (motors) and eventually pick up the ball 
-  public Pickup() {
+  public IntakeLifter() {
+
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
@@ -23,22 +27,23 @@ public class Pickup extends CommandBase {
   public void initialize() {
   }
 
-  // Allows you to set the speed of the Intake motor
-  private double setSpeed(){
-    return -RobotContainer.joystick.getThrottle() * 100 + 100;
-  }
-
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double speed = IS_RUNNING ? 0.0: setSpeed(); 
-    Intake.catcher.set(speed);
-    IS_RUNNING = !IS_RUNNING;    
+    
+    double angle = IS_RUNNING ? 0.0: 90; 
+    Intake.intakeServo.setAngle(angle);
+  }
+
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+    Intake.intakeServo.setAngle(0.0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

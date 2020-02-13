@@ -25,12 +25,13 @@ public final class Constants {
   public static final int catcher1 = 5;
   public static final int catcher2 = 6;
   public static final int shooter = 7;
-  
-
   // Joystick port
   public static final int joystick = 0;
   // Buttons
   public static final int catcher = 3;
-  public static final int launch = 4;
+  public static final int launch = 1;
   public static final int color = 8;
+  public static final int slow15 = 10;
+  public static final int fast = 12;
+  public static final int cancel = 11;
 }

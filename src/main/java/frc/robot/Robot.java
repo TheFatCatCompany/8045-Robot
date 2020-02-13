@@ -14,13 +14,17 @@ import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Cancel;
 import frc.robot.commands.Colorswitch;
+import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
 import frc.robot.commands.Shootball;
@@ -52,13 +56,18 @@ public class Robot extends TimedRobot {
     // and put our
     // autonomous chooser on the dashboard.
     RobotContainer.xController = new XboxController(1);
-    RobotContainer.drivetrain= new Drivetrain();
+    RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.colorSwitch = new Colorswitch();
     RobotContainer.joystick = new Joystick(Constants.joystick);
-    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 8);
-    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, 1);
-    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, 3);
+    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, Constants.color);
+    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, Constants.launch);
+    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, Constants.catcher);
+    RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
+    RobotContainer.joystickButton10 = new JoystickButton(RobotContainer.joystick, Constants.slow15);
+    RobotContainer.joystickButton12 = new JoystickButton(RobotContainer.joystick, Constants.fast);
+    RobotContainer.joystickButton11 = new JoystickButton(RobotContainer.joystick, Constants.cancel);
+    RobotContainer.xBoxButton5 = new JoystickButton(RobotContainer.xController, 5);
     RobotContainer.drivetrain = new Drivetrain();
     RobotContainer.colorspinner = new Colorwheel();
     RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
@@ -77,7 +86,11 @@ public class Robot extends TimedRobot {
     RobotContainer.balllauncher = new Balllauncher();
     RobotContainer.pickup = new Pickup();
     RobotContainer.shootball = new Shootball();
+    RobotContainer.cancel = new Cancel();
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+    Balllauncher.gate = new Servo(0);
+    Intake.intakeServo = new Servo(1);
+    RobotContainer.intakeLifter = new IntakeLifter();
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);

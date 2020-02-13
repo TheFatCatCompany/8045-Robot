@@ -10,25 +10,27 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.I2C;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Cancel;
 import frc.robot.commands.Colorswitch;
+import frc.robot.commands.DrivePreset;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
 import frc.robot.commands.Shootball;
-import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
+import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.Trigger;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -47,9 +49,15 @@ public class RobotContainer {
   public static Move move;
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
+  public static Cancel cancel;
   public static JoystickButton joystickButton8;
+  public static JoystickButton joystickButton10;
+  public static JoystickButton joystickButton12;
+  public static JoystickButton joystickButton4;
   public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;
+  public static JoystickButton joystickButton11;
+  public static JoystickButton xBoxButton5;
   // public static Colorswitch colorswitch;
   public static DifferentialDrive myRobot;
   public static WPI_VictorSPX v1;
@@ -64,6 +72,7 @@ public class RobotContainer {
   public static Intake intake;
   public static Shootball shootball;
   public static Balllauncher balllauncher;
+  public static IntakeLifter intakeLifter;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -83,6 +92,9 @@ public class RobotContainer {
     joystickButton8.toggleWhenPressed(colorSwitch);
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
+    // joystickButton4.whileActiveContinuous(new DrivePreset());
+    joystickButton11.whileHeld(cancel);
+    xBoxButton5.toggleWhenActive(intakeLifter);
   }
 
   /**
