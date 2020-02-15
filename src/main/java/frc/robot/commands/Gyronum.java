@@ -1,5 +1,5 @@
 /*----------------------------------------------------------------------------*/
-/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Copyright (c) 2018-2019 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
 /* the project.                                                               */
@@ -7,34 +7,39 @@
 
 package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
-import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.Balllauncher;
-import frc.robot.subsystems.Intake;
+import com.ctre.phoenix.sensors.PigeonIMU;
+import frc.robot.subsystems.ExampleSubsystem;
+import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 
-public class Cancel extends CommandBase {
-  /**
-   * Creates a new Cancel.
-   */
-  public Cancel() {
+/**
+ * An example command that uses an example subsystem.
+ */
+
+ // Make more arrays to fill with more stuff to display please thanks
+
+public class Gyronum extends CommandBase {
+
+  
+  private short[] magArray;  
+  
+  public Gyronum() {
+    magArray = new short[3]; 
     // Use addRequirements() here to declare subsystem dependencies.
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    
+  
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.myRobot.arcadeDrive(0, 0);
-    Balllauncher.shooter.set(0.0);
-    Intake.catcher.set(0.0);
-    RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0);
+      RobotContainer.sensorthing.getRawMagnetometer(magArray);
   }
 
   // Called once the command ends or is interrupted.
@@ -45,6 +50,6 @@ public class Cancel extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return true;
+    return false;
   }
 }

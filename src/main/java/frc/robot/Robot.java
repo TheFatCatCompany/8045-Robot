@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
+import com.ctre.phoenix.sensors.PigeonIMU;
 
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
@@ -24,6 +25,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Cancel;
 import frc.robot.commands.Colorswitch;
+import frc.robot.commands.Gyronum;
 import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
 import frc.robot.commands.Pickup;
@@ -85,6 +87,7 @@ public class Robot extends TimedRobot {
     RobotContainer.pickup = new Pickup();
     RobotContainer.shootball = new Shootball();
     RobotContainer.cancel = new Cancel();
+    RobotContainer.sensorthing = new PigeonIMU(0);
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
     Balllauncher.gate = new Servo(0);
     Intake.intakeServo = new Servo(1);
@@ -146,6 +149,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+
   }
 
   @Override
@@ -165,6 +169,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+
   }
 
   @Override

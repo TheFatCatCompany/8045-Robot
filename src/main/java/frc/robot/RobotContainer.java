@@ -8,6 +8,7 @@
 package frc.robot;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.sensors.PigeonIMU;
 import com.revrobotics.ColorSensorV3;
 
 import edu.wpi.first.wpilibj.GenericHID;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.Cancel;
@@ -30,6 +32,7 @@ import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.Gyrosys;
 import frc.robot.subsystems.Intake;
 
 /**
@@ -49,6 +52,7 @@ public class RobotContainer {
   public static Move move;
   public static Drivetrain drivetrain;
   public static Colorwheel colorspinner;
+  public static Gyrosys gyrothing;
   public static Cancel cancel;
   public static JoystickButton joystickButton8;
   public static JoystickButton joystickButton4;
@@ -62,6 +66,7 @@ public class RobotContainer {
   public static WPI_VictorSPX v2;
   public static WPI_VictorSPX v3;
   public static WPI_VictorSPX v4;
+  public static PigeonIMU sensorthing;
   public static SpeedControllerGroup leftMotors;
   public static SpeedControllerGroup rightMotors;
   public static WPI_VictorSPX wheelspinner;
