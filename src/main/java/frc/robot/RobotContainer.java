@@ -10,6 +10,7 @@ package frc.robot;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
@@ -32,6 +33,7 @@ import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Ultrasound;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -74,8 +76,12 @@ public class RobotContainer {
   public static Shootball shootball;
   public static Balllauncher balllauncher;
   public static IntakeLifter intakeLifter;
+<<<<<<< Updated upstream
   public static MoveArm armMover;
 
+=======
+  public static AnalogInput ultrasound;
+>>>>>>> Stashed changes
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */

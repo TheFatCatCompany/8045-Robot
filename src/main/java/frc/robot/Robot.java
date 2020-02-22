@@ -7,17 +7,17 @@
 
 package frc.robot;
 
-import java.util.Scanner;
+
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -90,6 +90,7 @@ public class Robot extends TimedRobot {
     RobotContainer.shootball = new Shootball();
     RobotContainer.cancel = new Cancel();
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+    RobotContainer.ultrasound = new AnalogInput(0);
     Balllauncher.gate = new Servo(0);
     Intake.intakeServo = new Servo(1);
     Arm.Actuator = new Servo(2);
