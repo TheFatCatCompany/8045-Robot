@@ -34,4 +34,5 @@ public final class Constants {
   public static final int slow15 = 10;
   public static final int fast = 12;
   public static final int cancel = 11;
+  public static final int toggleArm = 9;
 }

@@ -24,6 +24,7 @@ import frc.robot.commands.DrivePreset;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
+import frc.robot.commands.MoveArm;
 import frc.robot.commands.Pickup;
 import frc.robot.commands.Shootball;
 import frc.robot.subsystems.Balllauncher;
@@ -73,6 +74,7 @@ public class RobotContainer {
   public static Shootball shootball;
   public static Balllauncher balllauncher;
   public static IntakeLifter intakeLifter;
+  public static MoveArm armMover;
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
