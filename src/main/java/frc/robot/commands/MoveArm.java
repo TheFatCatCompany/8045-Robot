@@ -35,20 +35,9 @@ public class MoveArm extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if(RobotContainer.joystick.getRawButtonPressed(Constants.toggleArm))
-    {
-        if(!toggleState)
-        {
-            Arm.Actuator.set(1.0);
-            toggleState = true;
-        }
-
-        else
-        {
-            Arm.Actuator.set(0);
-        }
+  Arm.Actuator.setSpeed(1.0);      
     }
-  }
+  
 
   // Called once the command ends or is interrupted.
   @Override

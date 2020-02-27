@@ -20,8 +20,8 @@ public final class Constants {
   public static final int RightLeader = 0;
   public static final int RightFollower = 3;
   public static final int LeftLeader = 1;
-  public static final int LeftFollower = 2;
-  public static final int conveyerBelt = 4;
+  public static final int LeftFollower = 4;
+  public static final int conveyerBelt = 5;
   public static final int catcher1 = 5;
   public static final int catcher2 = 6;
   public static final int shooter = 7;

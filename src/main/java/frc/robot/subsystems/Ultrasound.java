@@ -44,13 +44,13 @@ public class Ultrasound extends SubsystemBase {
     double currentDistance = m_filter.calculate(m_ultrasonic.getValue()) * kValueToInches;
     System.out.println(currentDistance);
     double currentSpeed = (kHoldDistance - currentDistance) * kP;
-    if (currentDistance <= 30) {
+    // if (currentDistance <= 30) {
     
-      RobotContainer.myRobot.arcadeDrive(0, 0);
-    }
-    else{
+    //   RobotContainer.myRobot.arcadeDrive(0, 0);
+    // }
+    // else{
   
-    RobotContainer.myRobot.arcadeDrive(currentSpeed, 0);
-    }
+    // RobotContainer.myRobot.arcadeDrive(currentSpeed, 0);
+    // }
   }
 }

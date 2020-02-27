@@ -16,9 +16,10 @@ public class Move extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    System.out.println(RobotContainer.joystick.getY());
     if(RobotContainer.joystick.getRawButtonPressed(8))
     {
-      spdMult = 0.3;    
+      spdMult = 0.5;
     }
     else if(RobotContainer.joystick.getRawButtonPressed(10))
     {
@@ -28,7 +29,7 @@ public class Move extends CommandBase {
     {
       spdMult = 1.0;
     }
-    RobotContainer.myRobot.arcadeDrive(spdMult*RobotContainer.joystick.getX(),spdMult*RobotContainer.joystick.getY());
+    RobotContainer.myRobot.arcadeDrive(-spdMult*RobotContainer.joystick.getY(),spdMult*RobotContainer.joystick.getX());
   }
 
   // Called once the command ends or is interrupted.

@@ -76,12 +76,9 @@ public class RobotContainer {
   public static Shootball shootball;
   public static Balllauncher balllauncher;
   public static IntakeLifter intakeLifter;
-<<<<<<< Updated upstream
   public static MoveArm armMover;
 
-=======
   public static AnalogInput ultrasound;
->>>>>>> Stashed changes
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -101,7 +98,7 @@ public class RobotContainer {
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
     // joystickButton4.whileActiveContinuous(new DrivePreset());
-    joystickButton11.whileHeld(cancel);
+    joystickButton11.whileHeld(armMover);
     xBoxButton5.toggleWhenActive(intakeLifter);
   }
 
