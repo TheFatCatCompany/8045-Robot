@@ -18,10 +18,8 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  */
 public class MoveArm extends CommandBase {
   
-  private boolean toggleState;  
 
   public MoveArm() {
-    toggleState = false;
     // Use addRequirements() here to declare subsystem dependencies.
     
   }
@@ -29,6 +27,7 @@ public class MoveArm extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
       Arm.Actuator.set(0);
   }
 
