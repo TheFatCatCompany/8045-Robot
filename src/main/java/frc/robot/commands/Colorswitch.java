@@ -39,6 +39,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   public WheelColors ColorChooser(){
   
   
+  
     if (RobotContainer.xController.getAButtonPressed()){
       defaultcolor = WheelColors.Green;
       return WheelColors.Green;
@@ -88,7 +89,6 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
       colorString = WheelColors.Blue;
-     
     } else if (match.color == kRedTarget) {
       colorString = WheelColors.Red;
     } else if (match.color == kGreenTarget) {
@@ -100,6 +100,20 @@ public class Colorswitch extends CommandBase implements IColorswitch {
       colorString = WheelColors.Black;
     }
     return(colorString);
+  }
+  public int ColorTargeting(){
+    int target;
+    if (ColorChooser() == WheelColors.Blue){
+      target = 4;
+    }
+    else if(ColorChooser() == WheelColors.Red){
+      target = 2;
+    }
+    else if(ColorChooser() == WheelColors.Green){
+      target = 3;
+    }
+  else{
+    target = 1;
   }
   return target;  
 }
