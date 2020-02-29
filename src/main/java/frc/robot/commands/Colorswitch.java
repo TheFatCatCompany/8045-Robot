@@ -1,12 +1,13 @@
 package frc.robot.commands;
 
-import frc.robot.RobotContainer;
-import frc.robot.commands.Colorswitch.WheelColors;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.revrobotics.ColorMatch;
 import com.revrobotics.ColorMatchResult;
+
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
+import frc.robot.commands.Colorswitch.WheelColors;
 public class Colorswitch extends CommandBase implements IColorswitch {
   ColorMatch m_colorMatcher = new ColorMatch();
   private final Color kBlueTarget = ColorMatch.makeColor(0.143, 0.427, 0.429);
@@ -14,7 +15,6 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   private final Color kGreenTarget = ColorMatch.makeColor(0.197, 0.561, 0.240);
   private final Color kRedTarget = ColorMatch.makeColor(0.561, 0.232, 0.114);
   private final Color kYellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
-
   public Colorswitch( ) {
   }
 
@@ -37,6 +37,9 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   }
 
   public WheelColors ColorChooser(){
+  
+  
+  
     if (RobotContainer.xController.getAButtonPressed()){
       defaultcolor = WheelColors.Green;
       return WheelColors.Green;
@@ -57,9 +60,17 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   }
 
   public void Motorcontrol(){
-    if (Colorreading() == ColorChooser()){
+    WheelColors[] colors = WheelColors.values();
+    if(Colorreading() == colors[ColorTargeting()]){
+
+    }
+
+    
+
+    else if (Colorreading() == ColorChooser()){
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 0); 
-    } else {
+    } 
+    else {
       RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 25); 
     }
   }
@@ -78,7 +89,6 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     ColorMatchResult match = m_colorMatcher.matchClosestColor(detectedColor);
     if (match.color == kBlueTarget) {
       colorString = WheelColors.Blue;
-     
     } else if (match.color == kRedTarget) {
       colorString = WheelColors.Red;
     } else if (match.color == kGreenTarget) {
@@ -91,6 +101,24 @@ public class Colorswitch extends CommandBase implements IColorswitch {
     }
     return(colorString);
   }
+  public int ColorTargeting(){
+    int target;
+    if (ColorChooser() == WheelColors.Blue){
+      target = 4;
+    }
+    else if(ColorChooser() == WheelColors.Red){
+      target = 2;
+    }
+    else if(ColorChooser() == WheelColors.Green){
+      target = 3;
+    }
+  else{
+    target = 1;
+  }
+  return target;  
+}
+
+
 
   public double countSpin()
   {
