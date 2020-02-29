@@ -30,13 +30,14 @@ public class Move extends CommandBase {
     {
       spdMult = 1.0;
     }
-    RobotContainer.myRobot.tankDrive(spdMult*RobotContainer.xController.getY(Hand.kLeft),spdMult*RobotContainer.xController.getY(Hand.kRight));
+    RobotContainer.myRobot.tankDrive(-spdMult*RobotContainer.xController.getY(Hand.kLeft),spdMult*RobotContainer.xController.getY(Hand.kRight));
   }
 
   // Called once the command ends or is interrupted.
   public void end() {
     RobotContainer.myRobot.tankDrive(0, 0);
   }
+
   
   // Returns true when the command should end.
   @Override
