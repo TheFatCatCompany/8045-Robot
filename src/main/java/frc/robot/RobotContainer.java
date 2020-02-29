@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix.sensors.PigeonIMU;
 import com.revrobotics.ColorSensorV3;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
@@ -26,6 +27,7 @@ import frc.robot.commands.DrivePreset;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
+import frc.robot.commands.MoveArm;
 import frc.robot.commands.Pickup;
 import frc.robot.commands.Shootball;
 import frc.robot.subsystems.Balllauncher;
@@ -34,6 +36,7 @@ import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Gyrosys;
 import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.Ultrasound;
 
 /**
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -55,6 +58,8 @@ public class RobotContainer {
   public static Gyrosys gyrothing;
   public static Cancel cancel;
   public static JoystickButton joystickButton8;
+  public static JoystickButton joystickButton10;
+  public static JoystickButton joystickButton12;
   public static JoystickButton joystickButton4;
   public static JoystickButton joystickButton1;
   public static JoystickButton joystickButton3;
@@ -76,7 +81,9 @@ public class RobotContainer {
   public static Shootball shootball;
   public static Balllauncher balllauncher;
   public static IntakeLifter intakeLifter;
+  public static MoveArm armMover;
 
+  public static AnalogInput ultrasound;
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
@@ -96,7 +103,7 @@ public class RobotContainer {
     joystickButton3.toggleWhenActive(pickup);
     joystickButton1.toggleWhenPressed(shootball);
     // joystickButton4.whileActiveContinuous(new DrivePreset());
-    joystickButton11.whileHeld(cancel);
+    joystickButton11.whileHeld(armMover);
     xBoxButton5.toggleWhenActive(intakeLifter);
   }
 

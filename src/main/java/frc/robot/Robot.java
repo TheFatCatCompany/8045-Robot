@@ -7,18 +7,18 @@
 
 package frc.robot;
 
-import java.util.Scanner;
+
 
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
 import com.ctre.phoenix.sensors.PigeonIMU;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command; 
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
@@ -28,8 +28,10 @@ import frc.robot.commands.Colorswitch;
 import frc.robot.commands.Gyronum;
 import frc.robot.commands.IntakeLifter;
 import frc.robot.commands.Move;
+import frc.robot.commands.MoveArm;
 import frc.robot.commands.Pickup;
 import frc.robot.commands.Shootball;
+import frc.robot.subsystems.Arm;
 import frc.robot.subsystems.Balllauncher;
 import frc.robot.subsystems.Colorwheel;
 import frc.robot.subsystems.Drivetrain;
@@ -66,6 +68,8 @@ public class Robot extends TimedRobot {
     RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, Constants.launch);
     RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, Constants.catcher);
     RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
+    RobotContainer.joystickButton10 = new JoystickButton(RobotContainer.joystick, Constants.slow15);
+    RobotContainer.joystickButton12 = new JoystickButton(RobotContainer.joystick, Constants.fast);
     RobotContainer.joystickButton11 = new JoystickButton(RobotContainer.joystick, Constants.cancel);
     RobotContainer.xBoxButton5 = new JoystickButton(RobotContainer.xController, 5);
     RobotContainer.drivetrain = new Drivetrain();
@@ -89,9 +93,12 @@ public class Robot extends TimedRobot {
     RobotContainer.cancel = new Cancel();
     RobotContainer.sensorthing = new PigeonIMU(0);
     Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+    RobotContainer.ultrasound = new AnalogInput(0);
     Balllauncher.gate = new Servo(0);
     Intake.intakeServo = new Servo(1);
+    Arm.Actuator = new Servo(2);
     RobotContainer.intakeLifter = new IntakeLifter();
+    RobotContainer.armMover = new MoveArm(); 
     Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
     Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
     Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
@@ -170,6 +177,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
 
+    Balllauncher.gate.setAngle(175);
   }
 
   @Override
