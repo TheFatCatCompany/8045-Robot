@@ -18,7 +18,7 @@ public class Move extends CommandBase {
   public void execute() {
     if(RobotContainer.joystick.getRawButtonPressed(8))
     {
-      spdMult = 0.3;
+      spdMult = 0.5;
     }
     else if(RobotContainer.joystick.getRawButtonPressed(10))
     {
