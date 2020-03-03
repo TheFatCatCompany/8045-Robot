@@ -62,7 +62,7 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   public void Motorcontrol(){
     WheelColors[] colors = WheelColors.values();
     if(Colorreading() == colors[ColorTargeting()]){
-
+        RobotContainer.wheelspinner.set(ControlMode.PercentOutput, 5);
     }
 
     
