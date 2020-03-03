@@ -41,20 +41,20 @@ public class Colorswitch extends CommandBase implements IColorswitch {
   
   
     if (RobotContainer.xController.getAButtonPressed()){
-      defaultcolor = WheelColors.Green;
-      return WheelColors.Green;
-    }
-    else if (RobotContainer.xController.getBButtonPressed()){
-      defaultcolor = WheelColors.Red;
-      return WheelColors.Red;
-    }
-    else if (RobotContainer.xController.getXButtonPressed()){
-      defaultcolor = WheelColors.Blue;
-      return WheelColors.Blue;
-    } 
-    else if (RobotContainer.xController.getYButtonPressed()){
       defaultcolor = WheelColors.Yellow;
       return WheelColors.Yellow;
+    }
+    else if (RobotContainer.xController.getBButtonPressed()){
+      defaultcolor = WheelColors.Blue;
+      return WheelColors.Blue;
+    }
+    else if (RobotContainer.xController.getXButtonPressed()){
+      defaultcolor = WheelColors.Red;
+      return WheelColors.Red;
+    } 
+    else if (RobotContainer.xController.getYButtonPressed()){
+      defaultcolor = WheelColors.Green;
+      return WheelColors.Green;
     }
     return defaultcolor;
   }
