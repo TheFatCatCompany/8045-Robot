@@ -7,55 +7,124 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Sendable;
-import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
-import frc.robot.subsystems.Drivetrain;
+
+
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.ColorSensorV3;
+import com.ctre.phoenix.sensors.PigeonIMU;
+
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj2.command.Command; 
+import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.commands.Cancel;
+import frc.robot.commands.Colorswitch;
+import frc.robot.commands.Gyronum;
+import frc.robot.commands.IntakeLifter;
+import frc.robot.commands.Move;
+import frc.robot.commands.MoveArm;
+import frc.robot.commands.Pickup;
+import frc.robot.commands.Shootball;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Balllauncher;
+import frc.robot.subsystems.Colorwheel;
+import frc.robot.subsystems.Drivetrain;
+import frc.robot.subsystems.Intake;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 /**
- * The VM is configured to automatically run this class, and to call the functions corresponding to
- * each mode, as described in the TimedRobot documentation. If you change the name of this class or
- * the package after creating this project, you must also update the build.gradle file in the
+ * The VM is configured to automatically run this class, and to call the
+ * functions corresponding to each mode, as des ribed in the TimedRobot
+ * documentation. If you change the name of this class or the package after
+ * creating this project, you must also update the build.gradle file in the
  * project.
  */
 public class Robot extends TimedRobot {
+
   private Command m_autonomousCommand;
-  public static Drivetrain m_drivetrain;
-  public static ColorSensorV3 m_colorsensor; 
-  private RobotContainer m_robotContainer;
+  private RobotContainer robotContainer;
 
   /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
+   * This function is run when the robot is first started up and should be used
+   * for any initialization code.
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // Instantiate our RobotContainer. This will perform all our button bindings,
+    // and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
-    m_drivetrain = new Drivetrain();
+    RobotContainer.xController = new XboxController(1);
+    RobotContainer.drivetrain = new Drivetrain();
+    RobotContainer.colorspinner = new Colorwheel();
+    RobotContainer.colorSwitch = new Colorswitch();
+    RobotContainer.joystick = new Joystick(Constants.joystick);
+    RobotContainer.joystickButton8 = new JoystickButton(RobotContainer.joystick, 5);
+    RobotContainer.joystickButton1 = new JoystickButton(RobotContainer.joystick, Constants.launch);
+    RobotContainer.joystickButton3 = new JoystickButton(RobotContainer.joystick, Constants.catcher);
+    RobotContainer.joystickButton4 = new JoystickButton(RobotContainer.joystick, 4);
+    RobotContainer.joystickButton10 = new JoystickButton(RobotContainer.joystick, Constants.slow15);
+    RobotContainer.joystickButton12 = new JoystickButton(RobotContainer.joystick, Constants.fast);
+    RobotContainer.joystickButton11 = new JoystickButton(RobotContainer.joystick, Constants.cancel);
+    RobotContainer.xBoxButton5 = new JoystickButton(RobotContainer.xController, 5);
+    RobotContainer.drivetrain = new Drivetrain();
+    RobotContainer.colorspinner = new Colorwheel();
+    RobotContainer.v1 = new WPI_VictorSPX(Constants.RightLeader);
+    RobotContainer.v2 = new WPI_VictorSPX(Constants.LeftLeader);
+    RobotContainer.v3 = new WPI_VictorSPX(Constants.RightFollower);
+    RobotContainer.v4 = new WPI_VictorSPX(Constants.LeftFollower);
+    RobotContainer.leftMotors = new SpeedControllerGroup(RobotContainer.v1, RobotContainer.v3);
+    RobotContainer.rightMotors = new SpeedControllerGroup(RobotContainer.v2, RobotContainer.v4);
+    RobotContainer.myRobot = new DifferentialDrive(RobotContainer.rightMotors, RobotContainer.leftMotors);
+    RobotContainer.i2cPort = I2C.Port.kOnboard;
+    RobotContainer.colorsensor = new ColorSensorV3(RobotContainer.i2cPort);
+    RobotContainer.wheelspinner = new WPI_VictorSPX(5);
+    RobotContainer.drivetrain.intialize();
+    RobotContainer.move = new Move();
+    RobotContainer.intake = new Intake();
+    RobotContainer.balllauncher = new Balllauncher();
+    RobotContainer.pickup = new Pickup();
+    RobotContainer.shootball = new Shootball();
+    RobotContainer.cancel = new Cancel();
+    RobotContainer.sensorthing = new PigeonIMU(0);
+    Balllauncher.shooter = new WPI_VictorSPX(Constants.shooter);
+    RobotContainer.ultrasound = new AnalogInput(0);
+    Balllauncher.gate = new Servo(0);
+    Intake.intakeServo = new Servo(1);
+    Arm.Actuator = new Servo(2);
+    RobotContainer.intakeLifter = new IntakeLifter();
+    RobotContainer.armMover = new MoveArm(); 
+    Intake.catcher1 = new WPI_VictorSPX(Constants.catcher1);
+    Intake.catcher2 = new WPI_VictorSPX(Constants.catcher2);
+    Intake.catcher = new SpeedControllerGroup(Intake.catcher1, Intake.catcher2);
+    Intake.conveyerBelt = new WPI_VictorSPX(Constants.conveyerBelt);
+    robotContainer = new RobotContainer();
   }
 
   /**
-   *This function is called every robot packet, no matter the mode. Use this for items like
-   * diagnostics that you want ran during disabled, autonomous, teleoperated and test.
+   * This function is called every robot packet, no matter the mode. Use this for
+   * items like diagnostics that you want ran during disabled, autonomous,
+   * teleoperated and test.
    *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
+   * <p>
+   * This runs after the mode specific periodic functions, but before LiveWindow
+   * and SmartDashboard integrated updating.
    */
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
+    // Runs the Scheduler. This is responsible for polling buttons, adding
+    // newly-scheduled
+    // commands, running already-scheduled commands, removing finished or
+    // interrupted commands,
+    // and running subsystem periodic() methods. This must be called from the
+    // robot's periodic
     // block in order for anything in the Command-based framework to work.
-    // System.out.print(m_colorsensor.getBlue());
     CommandScheduler.getInstance().run();
-    // Shuffleboard.getTab("test").add("Blue", m_colorsensor.getBlue());
   }
 
   /**
@@ -67,7 +136,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledPeriodic() {
-    Scheduler.getInstance().run();
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -75,8 +144,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_robotContainer.getAutonomousCommand();
-
+    m_autonomousCommand = robotContainer.getAutonomousCommand();
     // schedule the autonomous command (example)
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
@@ -88,6 +156,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    
+
+
   }
 
   @Override
@@ -99,6 +170,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    RobotContainer.move.schedule();
   }
 
   /**
@@ -106,8 +178,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
-  // Moveforward.execute();
-    Scheduler.getInstance().run();
+
+    Balllauncher.gate.setAngle(175);
   }
 
   @Override
